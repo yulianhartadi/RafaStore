@@ -4,10 +4,16 @@ import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Gravity;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -15,8 +21,7 @@ import io.paperdb.Paper;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private Button btnLogout;
-    TabLayout tabBottomNav;
+    private TabLayout tabBottomNav;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +29,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         initMenuBottom();
-
+        initMenuDrawer();
 
         /*btnLogout = findViewById(R.id.btn_logout);
         btnLogout.setOnClickListener(new View.OnClickListener() {
@@ -38,6 +43,18 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(logoutIntent);
             }
         });*/
+    }
+
+    private void initMenuDrawer() {
+        final DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+        ImageButton btnDrawer = findViewById(R.id.btn_drawer);
+        btnDrawer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawerLayout.openDrawer(GravityCompat.START);
+                drawerLayout.openDrawer(Gravity.LEFT);
+            }
+        });
     }
 
     private void initMenuBottom() {
