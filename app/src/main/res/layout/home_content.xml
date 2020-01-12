@@ -7,24 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:fitsSystemWindows="true"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:orientation="vertical"
-            app:layout_scrollFlags="scroll|enterAlways" />
-
-            <!-- Search bar -->
-
-
-    </com.google.android.material.appbar.AppBarLayout>
 
     <!-- Swipe refresh layout -->
     <!--<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
