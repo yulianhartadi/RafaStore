@@ -66,15 +66,6 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-        Button btnLoginFb = findViewById(R.id.btn_login_fb);
-        btnLoginFb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                registerProgressBar.setVisibility(View.VISIBLE);
-                registerAccount();
-            }
-        });
-
         Button btnLoginGoogle = findViewById(R.id.btn_login_google);
         btnLoginGoogle.setOnClickListener(new View.OnClickListener() {
             @Override

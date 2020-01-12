@@ -91,6 +91,7 @@ public class LoginActivity extends AppCompatActivity {
         fabLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
+                progress_bar.setVisibility(View.VISIBLE);
                 loginAction();
             }
         });
@@ -116,15 +117,15 @@ public class LoginActivity extends AppCompatActivity {
 
         if (TextUtils.isEmpty(phone)) {
             Toast.makeText(this, "Silahkan isi dengan no hp. Anda", Toast.LENGTH_SHORT).show();
-            fabLogin.setAlpha(1f);
+            fabLogin.setAlpha(0f);
             progress_bar.setVisibility(View.INVISIBLE);
         } else if (TextUtils.isEmpty(password)) {
             Toast.makeText(this, "Silahkan isi dengan password Anda", Toast.LENGTH_SHORT).show();
-            fabLogin.setAlpha(1f);
+            fabLogin.setAlpha(0f);
             progress_bar.setVisibility(View.INVISIBLE);
         } else {
 
-            fabLogin.setAlpha(1f);
+            fabLogin.setAlpha(0f);
             allowAccessToAccount(phone, password);
         }
 
@@ -157,14 +158,14 @@ public class LoginActivity extends AppCompatActivity {
                         if (userData.getPassword().equals(password)) {
 
                             if (parentDbName.equals("Users")) {
-                                Toast.makeText(LoginActivity.this, "Sebagai User", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "Login User", Toast.LENGTH_SHORT).show();
                                 progress_bar.setVisibility(View.GONE);
 
                                 // Home as users
                                 Intent homeIntent = new Intent(LoginActivity.this, HomeActivity.class);
                                 startActivity(homeIntent);
                             } else if (parentDbName.equals("Admins")) {
-                                Toast.makeText(LoginActivity.this, "Sebagai Admin", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "Login Admin", Toast.LENGTH_SHORT).show();
                                 progress_bar.setVisibility(View.GONE);
 
                                 // Home as admin

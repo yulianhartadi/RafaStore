@@ -1,8 +1,5 @@
 package net.kampungweb.rafastore;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -10,7 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.google.android.material.snackbar.Snackbar;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -60,24 +59,24 @@ public class MainActivity extends AppCompatActivity {
                 if (dataSnapshot.child("Users").child(userPhoneKey).exists()) {
 
                     //Login
-                    Users userData = dataSnapshot.child("Users").child(userPhoneKey).getValue(Users.class);
+                    Users userData = dataSnapshot.child(parentDbName).child(userPhoneKey).getValue(Users.class);
 
                     assert userData != null;
                     if (userData.getPhoneNumber().equals(userPhoneKey)) {
 
                         if (userData.getPassword().equals(userPasswordKey)) {
 
-                            if (parentDbName.equals("Users")) {
-                                Toast.makeText(MainActivity.this, "Sebagai User", Toast.LENGTH_SHORT).show();
-
-                                // Home as users
-                                Intent homeIntent = new Intent(MainActivity.this, HomeActivity.class);
-                                startActivity(homeIntent);
-                            } else if (parentDbName.equals("Admins")) {
+                            if (parentDbName.equals("Admins")) {
                                 Toast.makeText(MainActivity.this, "Sebagai Admin", Toast.LENGTH_SHORT).show();
 
+                                // Home as users
+                                Intent intent = new Intent(MainActivity.this, AdminCategoryActivity.class);
+                                startActivity(intent);
+                            } else if (parentDbName.equals("Users")) {
+                                Toast.makeText(MainActivity.this, "Sebagai User", Toast.LENGTH_SHORT).show();
+
                                 // Home as admin
-                                Intent homeIntent = new Intent(MainActivity.this, AdminCategoryActivity.class);
+                                Intent homeIntent = new Intent(MainActivity.this, HomeActivity.class);
                                 startActivity(homeIntent);
                             }
 

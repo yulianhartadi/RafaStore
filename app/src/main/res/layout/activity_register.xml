@@ -5,14 +5,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".RegisterActivity">
-<!--
+    <!--
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/image_30" />
--->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/image_30" />
+    -->
 
     <!-- Background Video -->
 
@@ -50,15 +50,6 @@
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
-            <!-- Login progress -->
-            <ProgressBar
-                android:id="@+id/pb_progress"
-                style="?android:attr/progressBarStyleInverse"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/spacing_xlarge"
-                android:visibility="gone" />
-
             <ScrollView
                 android:id="@+id/login_form"
                 android:layout_width="match_parent"
@@ -92,15 +83,25 @@
                             android:layout_marginTop="@dimen/spacing_medium"
                             android:fontFamily="sans-serif-light"
                             android:text="RAFA STORE"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-                            android:textColor="@android:color/white" />
+                            android:textColor="@android:color/white"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <!-- Login progress -->
+                        <ProgressBar
+                            android:id="@+id/pb_progress"
+                            style="?android:attr/progressBarStyleSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="@dimen/spacing_medium"
+                            android:theme="@style/ProgressBar.White"
+                            android:visibility="gone" />
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/spacing_large"
                             android:theme="@style/EditText.White.Hint">
 
                             <com.google.android.material.textfield.TextInputEditText
@@ -204,16 +205,6 @@
 
                         </com.google.android.material.textfield.TextInputLayout>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/spacing_middle"
-                            android:layout_marginBottom="@dimen/spacing_middle"
-                            android:orientation="vertical"
-                            android:theme="@style/EditText.White.Hint">
-
-                        </LinearLayout>
-
                         <Button
                             android:id="@+id/btn_register"
                             android:layout_width="match_parent"
@@ -222,15 +213,6 @@
                             android:background="@drawable/btn_rounded_accent"
                             android:text="REGISTER"
                             android:textColor="@color/overlay_dark_90" />
-
-
-                        <Button
-                            android:id="@+id/btn_login_fb"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/btn_rounded_primary"
-                            android:text="REGISTER WITH FACEBOOK"
-                            android:textColor="@android:color/white" />
 
                         <Button
                             android:id="@+id/btn_login_google"
@@ -263,9 +245,7 @@
                         </LinearLayout>
 
 
-
                     </LinearLayout>
-
 
 
                 </RelativeLayout>

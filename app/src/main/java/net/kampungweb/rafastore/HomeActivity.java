@@ -1,35 +1,38 @@
 package net.kampungweb.rafastore;
 
-import android.content.Intent;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.core.widget.NestedScrollView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
-import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import io.paperdb.Paper;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private TabLayout tabBottomNav;
+    private View searchBar;
+    private BottomNavigationView bottomNavigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        initMenuBottom();
-        initMenuDrawer();
+        Paper.init(this);
+
+        //initContent();
+        //initMenuDrawer();
+        loadFragment(new HomeFragment());
+        initBottomMenu();
+
 
         /*btnLogout = findViewById(R.id.btn_logout);
         btnLogout.setOnClickListener(new View.OnClickListener() {
@@ -45,8 +48,75 @@ public class HomeActivity extends AppCompatActivity {
         });*/
     }
 
-    private void initMenuDrawer() {
-        final DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+    private void loadFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
+    // Navigation
+    /*private void initContent() {
+        searchBar = findViewById(R.id.search_bar);
+        NestedScrollView nestedContent = findViewById(R.id.nested_content);
+        nestedContent.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                if (scrollY < scrollY) { //scroll naik
+                    hideNavigation(false);
+                    hideBottomMenu(false);
+                }
+                if (scrollY > scrollY) { //turun
+                    hideNavigation(true);
+                    hideBottomMenu(true);
+                }
+            }
+        });
+    }*/
+
+    private void initBottomMenu() {
+        bottomNavigation = findViewById(R.id.bottom_nav);
+        bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+    }
+
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+            Fragment fragment;
+            switch (menuItem.getItemId()) {
+                case R.id.nav_home:
+                    Toast.makeText(getApplicationContext(), "home clicked", Toast.LENGTH_SHORT).show();
+                    fragment = new HomeFragment();
+                    loadFragment(fragment);
+                    return true;
+                case R.id.nav_categories:
+                    Toast.makeText(getApplicationContext(), "categories clicked", Toast.LENGTH_SHORT).show();
+                    fragment = new CategoriesFragment();
+                    loadFragment(fragment);
+                    return true;
+                case R.id.nav_search:
+                    Toast.makeText(getApplicationContext(), "search clicked", Toast.LENGTH_SHORT).show();
+                    fragment = new SearchFragment();
+                    loadFragment(fragment);
+                    return true;
+                case R.id.nav_cart:
+                    Toast.makeText(getApplicationContext(), "cart clicked", Toast.LENGTH_SHORT).show();
+                    fragment = new CartFragment();
+                    loadFragment(fragment);
+                    return true;
+                case R.id.nav_user:
+                    Toast.makeText(getApplicationContext(), "user clicked", Toast.LENGTH_SHORT).show();
+                    fragment = new UserFragment();
+                    loadFragment(fragment);
+                    return true;
+            }
+            return false;
+        }
+    };
+
+    /*private void initMenuDrawer() {
+        final DrawerLayout drawerLayout = findViewById(R.id.nav_view);
         ImageButton btnDrawer = findViewById(R.id.btn_drawer);
         btnDrawer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,71 +125,11 @@ public class HomeActivity extends AppCompatActivity {
                 drawerLayout.openDrawer(Gravity.LEFT);
             }
         });
-    }
-
-    private void initMenuBottom() {
-        tabBottomNav = findViewById(R.id.tab_bottom);
-
-        // menu icon
-        tabBottomNav.addTab(tabBottomNav.newTab().setIcon(R.drawable.ic_tab_bottom_home), 0);
-        tabBottomNav.addTab(tabBottomNav.newTab().setIcon(R.drawable.ic_tab_bottom_category), 1);
-        tabBottomNav.addTab(tabBottomNav.newTab().setIcon(R.drawable.ic_tab_bottom_search), 2);
-        tabBottomNav.addTab(tabBottomNav.newTab().setIcon(R.drawable.ic_tab_bottom_cart), 3);
-        tabBottomNav.addTab(tabBottomNav.newTab().setIcon(R.drawable.ic_tab_bottom_user), 4);
-
-        // set icon color pre-selected
-        tabBottomNav.getTabAt(0).getIcon().setColorFilter(getResources().getColor(R.color.cyan_400), PorterDuff.Mode.SRC_IN);
-        tabBottomNav.getTabAt(1).getIcon().setColorFilter(getResources().getColor(R.color.grey_60), PorterDuff.Mode.SRC_IN);
-        tabBottomNav.getTabAt(2).getIcon().setColorFilter(getResources().getColor(R.color.grey_60), PorterDuff.Mode.SRC_IN);
-        tabBottomNav.getTabAt(3).getIcon().setColorFilter(getResources().getColor(R.color.grey_60), PorterDuff.Mode.SRC_IN);
-        tabBottomNav.getTabAt(4).getIcon().setColorFilter(getResources().getColor(R.color.grey_60), PorterDuff.Mode.SRC_IN);
-
-        tabBottomNav.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                tab.getIcon().setColorFilter(getResources().getColor(R.color.cyan_400), PorterDuff.Mode.SRC_IN);
-                switch (tab.getPosition()) {
-                    case 0:
-                        Toast.makeText(HomeActivity.this, "Selected", Toast.LENGTH_SHORT).show();
-                        break;
-                    case 1:
-                        Intent productCategoriesIntent = new Intent(HomeActivity.this, ProductCategoriesActivity.class);
-                        startActivity(productCategoriesIntent);
-                        break;
-                    case 2:
-
-                        break;
-                    case 3:
-
-                        break;
-                    case 4:
-                        // destroy data login user
-                        Paper.book().destroy();
-
-                        Intent logoutIntent = new Intent(HomeActivity.this, MainActivity.class);
-                        startActivity(logoutIntent);
-                        break;
-                }
-
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-                tab.getIcon().setColorFilter(getResources().getColor(R.color.grey_60), PorterDuff.Mode.SRC_IN);
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
-
-
-    }
-
-    boolean backToExitPressedOnce = false;
+    }*/
 
     //click back button twice to exit or home app and prevent to login/register activity if user already login
+    boolean backToExitPressedOnce = false;
+
     @Override
     public void onBackPressed() {
 
@@ -142,4 +152,22 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
+    // hide searchBar and bottomNavigationMenu
+    boolean isNavigationHide = false;
+
+   /* private void hideNavigation(final boolean hide) {
+        if (isNavigationHide && hide || !isNavigationHide && !hide) return;
+        isNavigationHide = hide;
+        int moveY = hide ? (2 * bottomNavigationView.getHeight()) : 0;
+        bottomNavigationView.animate().translationY(moveY).setStartDelay(100).setDuration(300).start();
+    }*/
+
+    boolean isSearchBarHide = false;
+
+    private void hideBottomMenu(final boolean hide) {
+        if (isSearchBarHide && hide || !isSearchBarHide && !hide) return;
+        isSearchBarHide = hide;
+        int moveY = hide ? (2 * searchBar.getHeight()) : 0;
+        searchBar.animate().translationY(moveY).setStartDelay(100).setDuration(300).start();
+    }
 }
