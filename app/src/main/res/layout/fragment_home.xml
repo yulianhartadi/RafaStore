@@ -42,7 +42,6 @@
 
         <!-- search bar layout -->
         <include
-            android:id="@+id/search_bar"
             layout="@layout/card_view_search_bar" />
 
     </RelativeLayout>

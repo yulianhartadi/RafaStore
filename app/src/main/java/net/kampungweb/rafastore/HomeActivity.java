@@ -3,13 +3,10 @@ package net.kampungweb.rafastore;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.widget.NestedScrollView;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -33,7 +30,6 @@ public class HomeActivity extends AppCompatActivity {
         loadFragment(new HomeFragment());
         initBottomMenu();
 
-
         /*btnLogout = findViewById(R.id.btn_logout);
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,7 +52,6 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
-
     private void initBottomMenu() {
         bottomNav = findViewById(R.id.bottom_nav);
         bottomNav.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -77,7 +72,7 @@ public class HomeActivity extends AppCompatActivity {
                     loadFragment(fragment);
                     return true;
                 case R.id.nav_search:
-                    fragment = new SearchFragment();
+                    fragment = new FeedsFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.nav_cart:
@@ -87,6 +82,8 @@ public class HomeActivity extends AppCompatActivity {
                 case R.id.nav_user:
                     fragment = new UserFragment();
                     loadFragment(fragment);
+                    //Paper.book().destroy();
+                    //moveTaskToBack(true);
                     return true;
             }
             return false;
