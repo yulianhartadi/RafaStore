@@ -36,7 +36,6 @@ public class HomeFragment extends Fragment {
     private Runnable runnable = null;
     private Handler handler = new Handler();
     private ViewPager viewPager;
-    private TextView tvTitleSlider, tvBriefSlider;
     private LinearLayout layoutDots;
 
 

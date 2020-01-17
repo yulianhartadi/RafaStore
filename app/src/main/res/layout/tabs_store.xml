@@ -28,17 +28,17 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Terbaru"
+            android:text="@string/terlaris"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
 
         <Button
-            android:id="@+id/btn_terbaru"
+            android:id="@+id/btn_more_terlaris"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:minWidth="0dp"
-            android:text="MORE"
+            android:text="@string/semua"
             android:textColor="@color/grey_700" />
 
     </LinearLayout>
@@ -285,17 +285,17 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Recommended"
+            android:text="@string/terbaru"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
 
         <Button
-            android:id="@+id/btn_recomended"
+            android:id="@+id/btn_more_terbaru"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:minWidth="0dp"
-            android:text="MORE"
+            android:text="@string/semua"
             android:textColor="@color/grey_60" />
 
     </LinearLayout>
@@ -615,17 +615,17 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Terlaris"
+            android:text="@string/lainnya"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
 
         <Button
-            android:id="@+id/btn_terlaris"
+            android:id="@+id/btn_more_lainnya"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:minWidth="0dp"
-            android:text="MORE"
+            android:text="@string/semua"
             android:textColor="@color/grey_60" />
 
     </LinearLayout>
