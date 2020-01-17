@@ -73,12 +73,12 @@
                                         android:background="@color/grey_10"
                                         android:foreground="@color/overlay_dark_10" />
 
-                                    <!--android:background="@drawable/bg_gradient"-->
                                     <RelativeLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_alignParentBottom="true"
                                         android:layout_centerHorizontal="true"
+                                        android:background="@drawable/bg_gradient"
                                         android:orientation="vertical"
                                         android:paddingLeft="@dimen/spacing_large"
                                         android:paddingTop="@dimen/spacing_mxlarge"

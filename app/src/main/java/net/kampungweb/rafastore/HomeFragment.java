@@ -37,6 +37,7 @@ public class HomeFragment extends Fragment {
     private Handler handler = new Handler();
     private ViewPager viewPager;
     private TextView tvTitleSlider, tvBriefSlider;
+    private LinearLayout layoutDots;
 
 
     private static int[] arrayImagePlace = {
@@ -75,7 +76,7 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        final LinearLayout layoutDots = view.findViewById(R.id.layout_dots);
+        layoutDots = view.findViewById(R.id.layout_dots);
         viewPager = view.findViewById(R.id.vp_main_pager);
         adapterImageSlider = new AdapterImageSlider(getActivity(), new ArrayList<ImageSlider>());
 
@@ -94,14 +95,13 @@ public class HomeFragment extends Fragment {
 
         //dislay image pertama dulu
         viewPager.setCurrentItem(0);
+
         //addBottomDots
         addBottomDots(layoutDots, adapterImageSlider.getCount(), 0);
 
-        tvTitleSlider = view.findViewById(R.id.title_slider);
-        tvBriefSlider = view.findViewById(R.id.brief_slider);
-
-        tvTitleSlider.setText(items.get(0).name);
-        tvBriefSlider.setText(items.get(0).brief);
+        // Text belum jalan
+        ((TextView) view.findViewById(R.id.title_slider)).setText(items.get(0).name);
+        ((TextView) view.findViewById(R.id.brief_slider)).setText(items.get(0).brief);
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -178,8 +178,8 @@ public class HomeFragment extends Fragment {
             assert inflater != null;
             final View v = inflater.inflate(R.layout.item_slider_image, container, false);
 
-            ImageView image = v.findViewById(R.id.image);
-            MaterialRippleLayout lyt_parent = v.findViewById(R.id.lyt_parent);
+            ImageView image = v.findViewById(R.id.image_slider_main);
+            MaterialRippleLayout lyt_parent = v.findViewById(R.id.mrl_parent);
             Tools.displayImageOriginal(act, image, o.image);
 
             lyt_parent.setOnClickListener(new View.OnClickListener() {
