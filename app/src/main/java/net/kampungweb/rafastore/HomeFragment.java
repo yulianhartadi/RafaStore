@@ -90,7 +90,7 @@ public class HomeFragment extends Fragment {
             items.add(obj);
         }
 
-        this.adapterImageSlider.setItems(items);
+        adapterImageSlider.setItems(items);
         viewPager.setAdapter(adapterImageSlider);
 
         //dislay image pertama dulu
@@ -111,8 +111,8 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onPageSelected(int position) {
-                ((TextView) view.findViewById(R.id.title_slider)).setText(items.get(0).name);
-                ((TextView) view.findViewById(R.id.brief_slider)).setText(items.get(0).brief);
+                ((TextView) view.findViewById(R.id.title_slider)).setText(items.get(position).name);
+                ((TextView) view.findViewById(R.id.brief_slider)).setText(items.get(position).brief);
                 addBottomDots(layoutDots, adapterImageSlider.getCount(), position);
             }
 
@@ -125,6 +125,41 @@ public class HomeFragment extends Fragment {
         startAutoSlider(adapterImageSlider.getCount());
         return view;
 
+    }
+
+    //Bottom Dot Putih
+    private void addBottomDots(LinearLayout layoutDots, int size, int current) {
+        ImageView[] dots = new ImageView[size];
+
+        layoutDots.removeAllViews();
+        for (int i = 0; i < dots.length; i++) {
+            dots[i] = new ImageView(getContext());
+            int widthHeight = 15;
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(new ViewGroup.LayoutParams(widthHeight, widthHeight));
+            params.setMargins(10, 10, 10, 10);
+            dots[i].setLayoutParams(params);
+            dots[i].setImageResource(R.drawable.shape_circle_outline);
+            layoutDots.addView(dots[i]);
+        }
+
+        if (dots.length > 0) {
+            dots[current].setImageResource(R.drawable.shape_circle);
+        }
+    }
+
+    // start auto slider
+    private void startAutoSlider(final int count) {
+        runnable = new Runnable() {
+            @Override
+            public void run() {
+                int pos = viewPager.getCurrentItem();
+                pos = pos + 1;
+                if (pos >= count) pos = 0;
+                viewPager.setCurrentItem(pos);
+                handler.postDelayed(runnable, 3000);
+            }
+        };
+        handler.postDelayed(runnable, 3000);
     }
 
     private static class AdapterImageSlider extends PagerAdapter {
@@ -202,40 +237,6 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    //Bottom Dot Putih
-    private void addBottomDots(LinearLayout layoutDots, int size, int current) {
-        ImageView[] dots = new ImageView[size];
-
-        layoutDots.removeAllViews();
-        for (int i = 0; i < dots.length; i++) {
-            dots[i] = new ImageView(getContext());
-            int widthHeight = 15;
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(new ViewGroup.LayoutParams(widthHeight, widthHeight));
-            params.setMargins(10, 10, 10, 10);
-            dots[i].setLayoutParams(params);
-            dots[i].setImageResource(R.drawable.shape_circle_outline);
-            layoutDots.addView(dots[i]);
-        }
-
-        if (dots.length > 0) {
-            dots[current].setImageResource(R.drawable.shape_circle);
-        }
-    }
-
-    // start auto slider
-    private void startAutoSlider(final int count) {
-        runnable = new Runnable() {
-            @Override
-            public void run() {
-                int pos = viewPager.getCurrentItem();
-                pos = pos + 1;
-                if (pos >= count) pos = 0;
-                viewPager.setCurrentItem(pos);
-                handler.postDelayed(runnable, 3000);
-            }
-        };
-        handler.postDelayed(runnable, 3000);
-    }
 
     @Override
     public void onDestroy() {
