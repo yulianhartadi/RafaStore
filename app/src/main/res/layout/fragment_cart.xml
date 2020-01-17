@@ -81,7 +81,7 @@
                                     <TextView
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:text="Kaktus Ijo"
+                                        android:text="Sepatu"
                                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                                         android:textColor="@color/grey_90"
                                         app:fontFamily="sans-serif-medium" />
@@ -139,7 +139,7 @@
                                 android:layout_width="120dp"
                                 android:layout_height="120dp"
                                 android:scaleType="centerCrop"
-                                app:srcCompat="@drawable/img_plant_1" />
+                                app:srcCompat="@drawable/image_shop_1" />
 
                         </LinearLayout>
 
@@ -178,7 +178,7 @@
                                     <TextView
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:text="Aglaonema nek ra salah"
+                                        android:text="Jam Tangan"
                                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                                         android:textColor="@color/grey_90"
                                         app:fontFamily="sans-serif-medium" />
@@ -236,7 +236,7 @@
                                 android:layout_width="120dp"
                                 android:layout_height="120dp"
                                 android:scaleType="centerCrop"
-                                app:srcCompat="@drawable/img_plant_2" />
+                                app:srcCompat="@drawable/image_shop_2" />
 
                         </LinearLayout>
 
@@ -275,7 +275,7 @@
                                     <TextView
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:text="Kaktus juga"
+                                        android:text="Robot"
                                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                                         android:textColor="@color/grey_90"
                                         app:fontFamily="sans-serif-medium" />
@@ -333,7 +333,7 @@
                                 android:layout_width="120dp"
                                 android:layout_height="120dp"
                                 android:scaleType="centerCrop"
-                                app:srcCompat="@drawable/img_plant_6" />
+                                app:srcCompat="@drawable/image_shop_3" />
 
                         </LinearLayout>
 
@@ -372,7 +372,7 @@
                                     <TextView
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:text="Kaktus juga"
+                                        android:text="Amazon Alexa"
                                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                                         android:textColor="@color/grey_90"
                                         app:fontFamily="sans-serif-medium" />
@@ -430,7 +430,7 @@
                                 android:layout_width="120dp"
                                 android:layout_height="120dp"
                                 android:scaleType="centerCrop"
-                                app:srcCompat="@drawable/img_plant_4" />
+                                app:srcCompat="@drawable/image_shop_5" />
 
                         </LinearLayout>
 
@@ -469,7 +469,7 @@
                                     <TextView
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:text="Kaktus juga"
+                                        android:text="Apple Watch"
                                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                                         android:textColor="@color/grey_90"
                                         app:fontFamily="sans-serif-medium" />
@@ -527,7 +527,7 @@
                                 android:layout_width="120dp"
                                 android:layout_height="120dp"
                                 android:scaleType="centerCrop"
-                                app:srcCompat="@drawable/img_plant_8" />
+                                app:srcCompat="@drawable/image_shop_6" />
 
                         </LinearLayout>
 
@@ -566,7 +566,7 @@
                                     <TextView
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:text="Kaktus juga"
+                                        android:text="Camera Pocket"
                                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                                         android:textColor="@color/grey_90"
                                         app:fontFamily="sans-serif-medium" />
@@ -624,7 +624,7 @@
                                 android:layout_width="120dp"
                                 android:layout_height="120dp"
                                 android:scaleType="centerCrop"
-                                app:srcCompat="@drawable/img_plant_9" />
+                                app:srcCompat="@drawable/image_shop_8" />
 
                         </LinearLayout>
 

@@ -11,10 +11,15 @@ import android.view.Menu;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.ColorRes;
+import androidx.annotation.DrawableRes;
 import androidx.appcompat.widget.Toolbar;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import net.kampungweb.rafastore.R;
 
@@ -70,5 +75,15 @@ public class Tools {
         } catch (Exception e) {
         }
     }
+
+    public static void displayImageOriginal(Context ctx, ImageView img, @DrawableRes int drawable) {
+        try {
+            Glide.with(ctx).load(drawable)
+                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .into(img);
+        } catch (Exception e) {
+        }
+    }
+
 
 }
