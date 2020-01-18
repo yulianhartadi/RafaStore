@@ -8,13 +8,18 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -37,6 +42,7 @@ public class HomeFragment extends Fragment {
     private Handler handler = new Handler();
     private ViewPager viewPager;
     private LinearLayout layoutDots;
+    private Button btnMoreTerlaris, btnMoreTerbaru, btnMoreLainnya;
 
 
     private static int[] arrayImagePlace = {
@@ -78,6 +84,73 @@ public class HomeFragment extends Fragment {
         layoutDots = view.findViewById(R.id.layout_dots);
         viewPager = view.findViewById(R.id.vp_main_pager);
         adapterImageSlider = new AdapterImageSlider(getActivity(), new ArrayList<ImageSlider>());
+        ImageButton imgfavorit = view.findViewById(R.id.btn_favorite);
+        ImageButton imgMessage = view.findViewById(R.id.btn_message);
+        ImageButton imgNotification = view.findViewById(R.id.btn_notif);
+
+        imgfavorit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), "favorit clicked", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        imgMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), "message clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        imgNotification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), "message clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //Button More
+        btnMoreTerlaris = view.findViewById(R.id.btn_more_terlaris);
+        btnMoreTerbaru = view.findViewById(R.id.btn_more_terbaru);
+        btnMoreLainnya = view.findViewById(R.id.btn_more_lainnya);
+
+        btnMoreTerlaris.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = getFragmentManager();
+                assert fragmentManager != null;
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                MoreFragment moreFragment = new MoreFragment();
+                fragmentTransaction.replace(R.id.fragment_home, moreFragment);
+                fragmentTransaction.commit();
+            }
+        });
+
+        btnMoreTerbaru.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = getFragmentManager();
+                assert fragmentManager != null;
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                MoreFragment moreFragment = new MoreFragment();
+                fragmentTransaction.replace(R.id.fragment_home, moreFragment);
+                fragmentTransaction.commit();
+            }
+        });
+
+        btnMoreLainnya.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = getFragmentManager();
+                assert fragmentManager != null;
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                MoreFragment moreFragment = new MoreFragment();
+                fragmentTransaction.replace(R.id.fragment_home, moreFragment);
+                fragmentTransaction.commit();
+            }
+        });
+
 
         final List<ImageSlider> items = new ArrayList<>();
         for (int i = 0; i < arrayImagePlace.length; i++) {
@@ -155,10 +228,10 @@ public class HomeFragment extends Fragment {
                 pos = pos + 1;
                 if (pos >= count) pos = 0;
                 viewPager.setCurrentItem(pos);
-                handler.postDelayed(runnable, 3000);
+                handler.postDelayed(runnable, 6000);
             }
         };
-        handler.postDelayed(runnable, 3000);
+        handler.postDelayed(runnable, 6000);
     }
 
     private static class AdapterImageSlider extends PagerAdapter {
@@ -204,7 +277,7 @@ public class HomeFragment extends Fragment {
 
         @NonNull
         @Override
-        public Object instantiateItem(ViewGroup container, int position) {
+        public Object instantiateItem(ViewGroup container, final int position) {
 
             final ImageSlider o = items.get(position);
 
@@ -221,7 +294,10 @@ public class HomeFragment extends Fragment {
                 public void onClick(View view) {
                     if (onItemClickListener != null) {
                         onItemClickListener.onItemClick(v, o);
+
                     }
+                    Toast.makeText(act, "image slider click", Toast.LENGTH_SHORT).show();
+
                 }
             });
 

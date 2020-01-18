@@ -5,17 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="75dp"
     android:background="@color/colorPrimaryDark"
-    android:fitsSystemWindows="true"
-    android:orientation="vertical">
+    android:fitsSystemWindows="false"
+    android:orientation="horizontal">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_search"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/spacing_middle"
         android:layout_marginTop="@dimen/spacing_large"
-        android:layout_marginRight="@dimen/spacing_middle"
-        android:layout_marginBottom="@dimen/spacing_middle"
+        android:layout_marginBottom="@dimen/spacing_large"
+        android:layout_weight="1"
         android:clipToPadding="false"
         app:cardBackgroundColor="@android:color/white"
         app:cardCornerRadius="3dp"
@@ -32,6 +32,7 @@
                 android:id="@+id/btn_menu"
                 android:layout_width="?attr/actionBarSize"
                 android:layout_height="?attr/actionBarSize"
+                android:layout_gravity="center"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:tint="@color/grey_40"
                 app:srcCompat="@drawable/ic_search" />
@@ -41,20 +42,60 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:text="Search"
+                android:gravity="center|left"
+                android:paddingStart="@dimen/spacing_small"
+                android:text="@string/cari"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
                 android:textColor="@color/grey_40" />
-
-            <ImageButton
-                android:layout_width="?attr/actionBarSize"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:tint="@color/grey_60"
-                app:srcCompat="@drawable/ic_mic" />
 
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <View
+        android:layout_width="@dimen/spacing_large"
+        android:layout_height="match_parent" />
+
+    <ImageButton
+        android:id="@+id/btn_favorite"
+        android:layout_width="?attr/actionBarSize"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:tint="@android:color/white"
+        app:srcCompat="@drawable/ic_favorite" />
+
+    <View
+        android:layout_width="@dimen/spacing_large"
+        android:layout_height="match_parent" />
+
+    <ImageButton
+        android:id="@+id/btn_message"
+        android:layout_width="?attr/actionBarSize"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:tint="@android:color/white"
+        app:srcCompat="@drawable/ic_email" />
+
+    <View
+        android:layout_width="@dimen/spacing_large"
+        android:layout_height="match_parent" />
+
+    <ImageButton
+        android:id="@+id/btn_notif"
+        android:layout_width="?attr/actionBarSize"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:tint="@android:color/white"
+        app:srcCompat="@drawable/ic_notifications" />
+
+    <View
+        android:layout_width="@dimen/spacing_large"
+        android:layout_height="match_parent" />
 
 </LinearLayout>

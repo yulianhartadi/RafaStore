@@ -2,6 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/grey_5"
@@ -29,11 +30,11 @@
                     android:descendantFocusability="blocksDescendants"
                     android:orientation="vertical">
 
+                    <!-- Slider Image Atas -->
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="75dp" />
-
-                    <!-- Slider Image Atas -->
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -135,68 +136,6 @@
 
 
                                     </RelativeLayout>
-
-                                    <!--<RelativeLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_alignParentBottom="true"
-                                        android:background="@drawable/bg_gradient"
-                                        android:orientation="vertical"
-                                        android:paddingLeft="@dimen/spacing_large"
-                                        android:paddingTop="@dimen/spacing_mxlarge"
-                                        android:paddingRight="@dimen/spacing_large"
-                                        android:paddingBottom="@dimen/spacing_mlarge">
-
-                                        <LinearLayout
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:orientation="vertical">
-
-                                            <TextView
-                                                android:id="@+id/tv_main_slider"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:text="Suspendisse ornare est ac auctor pulvinar"
-                                                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                                                android:textColor="@android:color/white" />
-
-                                            <LinearLayout
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_marginTop="@dimen/spacing_middle"
-                                                android:gravity="center"
-                                                android:orientation="horizontal">
-
-                                                <ImageView
-                                                    android:layout_width="@dimen/spacing_large"
-                                                    android:layout_height="@dimen/spacing_large"
-                                                    android:layout_marginEnd="@dimen/spacing_medium"
-                                                    android:tint="@color/grey_10"
-                                                    app:srcCompat="@drawable/ic_graphic_eq" />
-
-                                                <TextView
-                                                    android:id="@+id/brief"
-                                                    android:layout_width="wrap_content"
-                                                    android:layout_height="wrap_content"
-                                                    android:text="Lorem Ipsum"
-                                                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                                                    android:textColor="@color/grey_10" />
-
-                                            </LinearLayout>
-
-                                        </LinearLayout>
-
-                                        <LinearLayout
-                                            android:id="@+id/ll_dot_slider"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_alignParentEnd="true"
-                                            android:layout_alignParentRight="true"
-                                            android:gravity="right"
-                                            android:orientation="horizontal" />
-
-
-                                    </RelativeLayout>-->
 
                                 </RelativeLayout>
                             </androidx.cardview.widget.CardView>
