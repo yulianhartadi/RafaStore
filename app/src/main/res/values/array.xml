@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--shopping product data-->
+    <integer-array name="shop_product_image">
+        <item>@drawable/image_shop_1</item>
+        <item>@drawable/image_shop_2</item>
+        <item>@drawable/image_shop_3</item>
+        <item>@drawable/image_shop_4</item>
+        <item>@drawable/image_shop_5</item>
+
+        <item>@drawable/image_shop_6</item>
+        <item>@drawable/image_shop_7</item>
+        <item>@drawable/image_shop_8</item>
+    </integer-array>
+
+    <string-array name="shop_product_title">
+        <item>Fashion B07 Keara 933</item>
+        <item>Coup Hoodie Jacket</item>
+        <item>Gala Suede Jacket Flower</item>
+        <item>Qonnoq Checked Blouse</item>
+        <item>Java Seven Belladji 674</item>
+
+        <item>Kanvas Sneaker Shoes</item>
+        <item>Clarks Idamarie Faye Lea</item>
+        <item>Piero Rush Women</item>
+    </string-array>
+
+    <string-array name="shop_product_price">
+        <item>Rp. 48.000</item>
+        <item>Rp. 89.000</item>
+        <item>Rp. 66.800</item>
+        <item>Rp. 34.500</item>
+        <item>Rp. 44.900</item>
+
+        <item>Rp. 59.000</item>
+        <item>Rp. 78.200</item>
+        <item>Rp. 96.000</item>
+    </string-array>
 
     <string-array name="sample_images_name">
         <item>Night Street</item>

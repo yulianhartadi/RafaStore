@@ -17,6 +17,8 @@
     <dimen name="spacing_xmlarge">40dp</dimen>
     <dimen name="spacing_xxlarge">50dp</dimen>
     <dimen name="spacing_xxxlarge">55dp</dimen>
+    <dimen name="spacing_60">60dp</dimen>
+    <dimen name="spacing_65">65dp</dimen>
 
     <dimen name="nav_header_height">160dp</dimen>
     <dimen name="card_elevation">1dp</dimen>
