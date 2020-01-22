@@ -26,22 +26,10 @@ public class HomeActivity extends AppCompatActivity {
 
         Paper.init(this);
 
-        //initMenuDrawer();
+        //initBottomMenu();
         loadFragment(new HomeFragment());
         initBottomMenu();
 
-        /*btnLogout = findViewById(R.id.btn_logout);
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                // destroy data login user
-                Paper.book().destroy();
-
-                Intent logoutIntent = new Intent(HomeActivity.this, LoginActivity.class);
-                startActivity(logoutIntent);
-            }
-        });*/
     }
 
     private void loadFragment(Fragment fragment) {

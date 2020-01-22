@@ -27,5 +27,8 @@
     <string name="terbaru">Terbaru</string>
     <string name="lainnya">Lainnya</string>
     <string name="cari">Cari</string>
+    <string name="detail">Detail</string>
+    <string name="masukkan_keranjang">Masukkan Keranjang</string>
+    <string name="bagikan">Bagikan</string>
 
 </resources>

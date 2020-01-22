@@ -151,7 +151,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-
         final List<ImageSlider> items = new ArrayList<>();
         for (int i = 0; i < arrayImagePlace.length; i++) {
             ImageSlider obj = new ImageSlider();

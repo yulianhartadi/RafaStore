@@ -7,12 +7,18 @@
     android:layout_height="match_parent"
     tools:context=".CategoriesFragment">
 
-    <include layout="@layout/card_view_search_bar" />
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimaryDark"
+        app:contentInsetStartWithNavigation="0dp"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="@dimen/spacing_xxxlarge"
         android:layout_marginBottom="@dimen/spacing_xxxlarge">
 
         <androidx.core.widget.NestedScrollView

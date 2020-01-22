@@ -69,25 +69,30 @@ public class AdapterMoreProduct extends RecyclerView.Adapter<RecyclerView.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
         if (holder instanceof OriginalViewHolder) {
             OriginalViewHolder viewHolder = (OriginalViewHolder) holder;
 
-            final MoreProduct product = items.get(position);
-            viewHolder.title.setText(product.title);
-            viewHolder.price.setText(product.price);
-            Tools.displayImageOriginal(ctx, viewHolder.image, product.image);
+            final MoreProduct moreProduct = items.get(position);
+            viewHolder.title.setText(moreProduct.title);
+            viewHolder.price.setText(moreProduct.price);
+            Tools.displayImageOriginal(ctx, viewHolder.image, moreProduct.image);
             viewHolder.lyt_parent.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     //mOnItemClickListener
+                    if (mOnItemClickListener != null){
+                        mOnItemClickListener.onItemClick(view, items.get(position), position);
+                    }
                 }
             });
 
             viewHolder.more.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    // onMore Button click
+                    if (onMoreButtonClickListener == null) return;
+                    onMoreButtonClick(view, moreProduct);
                 }
             });
         }
@@ -102,8 +107,8 @@ public class AdapterMoreProduct extends RecyclerView.Adapter<RecyclerView.ViewHo
                 return true;
             }
         });
-        //popupMenu.inflate(R.menu.menu_product_more);
-        //popupMenu.show();
+        popupMenu.inflate(R.menu.menu_product_more);
+        popupMenu.show();
     }
 
 

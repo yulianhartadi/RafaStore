@@ -23,7 +23,7 @@ import io.paperdb.Paper;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnLogin, btnRegister;
+    private Button btnRegister;
     private String parentDbName = "Users";
 
     @Override
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initLogin() {
-        btnLogin = findViewById(R.id.btn_login);
+        Button btnLogin = findViewById(R.id.btn_login);
         btnRegister = findViewById(R.id.btn_register);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
