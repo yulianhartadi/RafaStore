@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -24,6 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import net.kampungweb.rafastore.model.Users;
 import net.kampungweb.rafastore.prevalent.Prevalent;
+import net.kampungweb.rafastore.utils.NetworkStatus;
 
 import java.util.HashMap;
 import java.util.Objects;
@@ -62,7 +64,15 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                createAccount();
+
+                // Cek Koneksi, kalau online, buat akun
+                if (NetworkStatus.getInstance(getApplicationContext()).isOnline()){
+                    createAccount();
+                } else {
+                    Toast.makeText(getApplicationContext(),"Tidak ada sambungan data",Toast.LENGTH_SHORT).show();
+                    Log.v("Home", "############################You are not online!!!!");
+                }
+                //createAccount();
             }
         });
 
@@ -218,5 +228,18 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        finish();
+        startActivity(getIntent());
     }
 }

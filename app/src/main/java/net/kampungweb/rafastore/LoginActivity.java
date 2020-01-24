@@ -2,7 +2,9 @@ package net.kampungweb.rafastore;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -23,6 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import net.kampungweb.rafastore.model.Users;
 import net.kampungweb.rafastore.prevalent.Prevalent;
+import net.kampungweb.rafastore.utils.NetworkStatus;
 
 import java.util.Objects;
 
@@ -91,8 +94,17 @@ public class LoginActivity extends AppCompatActivity {
         fabLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
+                fabLogin.setAlpha(1f);
                 progress_bar.setVisibility(View.VISIBLE);
-                loginAction();
+
+                // Cek Koneksi, kalau online, login
+                if (NetworkStatus.getInstance(getApplicationContext()).isOnline()){
+                    loginAction();
+                } else {
+                    Toast.makeText(getApplicationContext(),"Tidak ada sambungan data",Toast.LENGTH_SHORT).show();
+                    Log.v("Home", "############################You are not online!!!!");
+                }
+
             }
         });
 
@@ -109,8 +121,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginAction() {
-        progress_bar.setVisibility(View.VISIBLE);
-        fabLogin.setAlpha(0f);
 
         final String phone = Objects.requireNonNull(tiePhoneNumber.getText()).toString();
         final String password = Objects.requireNonNull(tiePassword.getText()).toString();
@@ -124,12 +134,9 @@ public class LoginActivity extends AppCompatActivity {
             fabLogin.setAlpha(0f);
             progress_bar.setVisibility(View.INVISIBLE);
         } else {
-
             fabLogin.setAlpha(0f);
             allowAccessToAccount(phone, password);
         }
-
-
     }
 
     private void allowAccessToAccount(final String phone, final String password) {
@@ -229,8 +236,8 @@ public class LoginActivity extends AppCompatActivity {
 
                         } else {
                             Toast.makeText(getApplicationContext(), "Login kredensial salah", Toast.LENGTH_SHORT).show();
-                            fabLogin.setAlpha(1f);
-                            progress_bar.setVisibility(View.GONE);
+                            //progress_bar.setVisibility(View.GONE);
+                            //fabLogin.setAlpha(1f);
                         }
                     }
 
@@ -249,5 +256,19 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    // if user click back button to reload the previious activity
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    // if user click bar button to pretend video background from stop playing
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        finish();
+        startActivity(getIntent());
+    }
 }
 

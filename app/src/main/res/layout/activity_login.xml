@@ -79,8 +79,8 @@
                 android:id="@+id/tie_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="-4dp"
-                android:layout_marginRight="-4dp"
+                android:layout_marginLeft="@dimen/spacing_xlarge"
+                android:layout_marginRight="@dimen/spacing_xlarge"
                 android:hint="No. HP"
                 android:inputType="phone"
                 android:maxLength="50"
@@ -104,8 +104,8 @@
                 android:id="@+id/tie_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="-4dp"
-                android:layout_marginRight="-4dp"
+                android:layout_marginLeft="@dimen/spacing_xlarge"
+                android:layout_marginRight="@dimen/spacing_xlarge"
                 android:hint="Kata Sandi"
                 android:inputType="textPassword"
                 android:maxLength="50"
@@ -120,6 +120,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_medium"
+            android:layout_marginLeft="@dimen/spacing_xlarge"
+            android:layout_marginRight="@dimen/spacing_xlarge"
             android:orientation="horizontal">
 
 
@@ -193,7 +195,7 @@
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_weight="0.5" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -215,7 +217,8 @@
 
         <View
             android:layout_width="0dp"
-            android:layout_height="@dimen/spacing_medium" />
+            android:layout_height="@dimen/spacing_medium"
+            android:layout_weight="1"/>
 
     </LinearLayout>
 

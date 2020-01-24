@@ -1,6 +1,9 @@
 package net.kampungweb.rafastore;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -23,7 +26,6 @@ import io.paperdb.Paper;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnRegister;
     private String parentDbName = "Users";
 
     @Override
@@ -101,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initLogin() {
         Button btnLogin = findViewById(R.id.btn_login);
-        btnRegister = findViewById(R.id.btn_register);
+        Button btnRegister = findViewById(R.id.btn_register);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,4 +121,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    // to pretend the video background from stop playing when user click button bar
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        finish();
+        startActivity(getIntent());
+    }
+
 }

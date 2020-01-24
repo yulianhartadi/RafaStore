@@ -24,7 +24,7 @@ import java.util.Objects;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * Fragment Kelompok setiap produk yang terlaris, terbaru, dan yang semacamnya
  */
 public class MoreFragment extends Fragment {
 
@@ -36,14 +36,17 @@ public class MoreFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_more, container, false);
 
         RecyclerView recyclerView = view.findViewById(R.id.rv_more);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        //sek iki error ra yo?
-        recyclerView.addItemDecoration(new SpacingItemDecoration(2, Tools.dpToPx(Objects.requireNonNull(getContext()), 8)));
 
+        // boolean still error
+        //recyclerView.addItemDecoration(new SpacingItemDecoration(2, Tools.dpToPx(this, 8), true));
+        // using this alt argument
+        recyclerView.addItemDecoration(new SpacingItemDecoration(2, Tools.dpToPx(Objects.requireNonNull(getContext()), 8)));
         recyclerView.setHasFixedSize(true);
         recyclerView.setNestedScrollingEnabled(false);
 
@@ -53,7 +56,7 @@ public class MoreFragment extends Fragment {
         AdapterMoreProduct adapterMoreProduct = new AdapterMoreProduct(getContext(), items);
         recyclerView.setAdapter(adapterMoreProduct);
 
-        View parent_view = view.findViewById(R.id.fm_more);
+        //View parent_view = view.findViewById(R.id.fm_more);
 
         // on item list clicked
         adapterMoreProduct.setOnItemClickListener(new AdapterMoreProduct.OnItemClickListener() {
