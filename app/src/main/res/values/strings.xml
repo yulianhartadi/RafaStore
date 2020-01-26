@@ -35,5 +35,11 @@
     <string name="masuk">MASUK</string>
     <string name="batal">BATAL</string>
     <string name="tambahkan">TAMBAHKAN</string>
+    <string name="cod">Cash On Delivery (COD)</string>
+    <string name="opsi_kirim">OPSI KIRIM :</string>
+    <string name="upload_product">upload_product</string>
+    <string name="thumbnail_product">thumbnail product one</string>
+    <string name="nama_produk">NAMA PRODUK</string>
+    <string name="harga_product">Harga Product</string>
 
 </resources>
