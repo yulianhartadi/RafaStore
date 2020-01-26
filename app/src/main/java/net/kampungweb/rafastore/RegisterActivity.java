@@ -12,11 +12,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -38,6 +50,11 @@ public class RegisterActivity extends AppCompatActivity {
     private ProgressBar registerProgressBar;
     private String parentDbName = "Users";
     private TextView tvBackLogin;
+
+    private static final String TAG = "GoogleSignIn";
+    private static final int RC_SIGN_IN = 9001;
+    private FirebaseAuth mAuth;
+    private GoogleSignInClient mGoogleSignInClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +98,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 registerProgressBar.setVisibility(View.VISIBLE);
-                registerAccount();
+                signInGoogle();
             }
         });
 
@@ -98,10 +115,91 @@ public class RegisterActivity extends AppCompatActivity {
 
             }
         }
+
+        //Google Sign In
+        // [START config_signin]
+        // Configure Google Sign In
+        GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        mGoogleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
+
+        // [START initialize_auth]
+        // Initialize Firebase Auth
+        mAuth = FirebaseAuth.getInstance();
+        // [END initialize_auth]
+
     }
 
+    // [START on_start_check_user]
+   /* @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        //updateUI(currentUser);
+    }*/
+    // [END on_start_check_user]
 
-    // Daftar Akun Baru
+
+    // [START onactivityresult]
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+        if (requestCode == RC_SIGN_IN){
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                // Google Sign In was successful, authenticate with Firebase
+                GoogleSignInAccount account = task.getResult(ApiException.class);
+                firebaseWithAuthWithGoogle(account);
+            } catch (ApiException e){
+                // Google Sign In failed, update UI appropriately
+                Log.w(TAG, "Google sign in failed", e);
+                // [START_EXCLUDE]
+                updateUI(null);
+                // [END_EXCLUDE]
+            }
+        }
+    }
+    // [END onactivityresult]
+
+    // [START auth_with_google]
+    private void firebaseWithAuthWithGoogle(GoogleSignInAccount acct){
+        Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
+        // [START_EXCLUDE silent]
+        //showProgressDialog();
+        // [END_EXCLUDE]
+
+        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "signInWithCredential:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            updateUI(user);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "signInWithCredential:failure", task.getException());
+                            Snackbar.make(findViewById(R.id.register_layout), "Authentication Failed.", Snackbar.LENGTH_SHORT).show();
+                            updateUI(null);
+                        }
+
+                        // [START_EXCLUDE]
+                        //hideProgressDialog();
+                        // [END_EXCLUDE]
+                    }
+                });
+
+    }
+
+    // Buat Akun Baru Daftar
     private void createAccount() {
         String name = Objects.requireNonNull(tieFullName.getText()).toString();
         String userName = Objects.requireNonNull(tieUserName.getText()).toString();
@@ -177,17 +275,71 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    private void registerAccount() {
+    // Sign in with Google account on user device
+    private void signInGoogle() {
 
-        // Toast Login
-        new Handler().postDelayed(new Runnable() {
+        Intent signInGoogle = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInGoogle, RC_SIGN_IN);
+
+        // Dummy Toast Login
+        /*new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 registerProgressBar.setVisibility(View.GONE);
                 Toast.makeText(getApplicationContext(), "Simulasi Login Sukses", Toast.LENGTH_SHORT).show();
             }
-        }, 3000);
+        }, 3000);*/
     }
+
+    // Sign out google
+    private void signOut() {
+        // Firebase sign out
+        mAuth.signOut();
+
+        // Google sign out
+        mGoogleSignInClient.signOut().addOnCompleteListener(this,
+                new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        updateUI(null);
+                    }
+                });
+    }
+
+    // revoke access account google
+    private void revokeAccess() {
+        // Firebase sign out
+        mAuth.signOut();
+
+        // Google revoke access
+        mGoogleSignInClient.revokeAccess().addOnCompleteListener(this,
+                new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        updateUI(null);
+                    }
+                });
+    }
+
+    private void updateUI(FirebaseUser user){
+        //hideProgressDialog();
+        if (user != null){
+            /*mStatusTextView.setText(getString(R.string.google_status_fmt, user.getEmail()));
+            mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
+
+            findViewById(R.id.signInButton).setVisibility(View.GONE);
+            findViewById(R.id.signOutAndDisconnect).setVisibility(View.VISIBLE);*/
+        } else {
+            /*
+            mStatusTextView.setText(R.string.signed_out);
+            mDetailTextView.setText(null);
+
+            findViewById(R.id.signInButton).setVisibility(View.VISIBLE);
+            findViewById(R.id.signOutAndDisconnect).setVisibility(View.GONE);*/
+        }
+    }
+
+
 
     private void AllowAccess(final String userPhoneKey, final String userPasswordKey) {
 
@@ -231,11 +383,19 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        // jika user sudah pernah login dengan email google account di devicenya
+
+    }
+
+    @Override
     public void onBackPressed() {
         Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
         startActivity(intent);
     }
 
+    // if user click bar button to pretend video background from stop playing
     @Override
     protected void onRestart() {
         super.onRestart();

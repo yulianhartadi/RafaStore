@@ -33,5 +33,7 @@
     <string name="rafa_store">RAFA STORE</string>
     <string name="daftar">Gabung</string>
     <string name="masuk">MASUK</string>
+    <string name="batal">BATAL</string>
+    <string name="tambahkan">TAMBAHKAN</string>
 
 </resources>
