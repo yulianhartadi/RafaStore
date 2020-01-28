@@ -54,6 +54,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,28 +111,21 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         ivThumbImg1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addImageThumb();
-            }
-        });
-
-        ivThumbImg1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addImageThumb();
+                // add image from gallery
             }
         });
 
         ivThumbImg2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addImageThumb();
+                // add image from gallery
             }
         });
 
         ivThumbImg3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addImageThumb();
+                // add image from gallery
             }
         });
 
@@ -169,13 +163,29 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
     }
 
     // add alternative pict produk and add to thumbnail gallery
-    private void addImageThumb() {
+    private void addImageThumb(final View arg0) {
 
         // ambil image dari gallery device pengguna
         /*Intent thumbGalleryIntent = new Intent();
         thumbGalleryIntent.setAction(Intent.ACTION_GET_CONTENT);
         thumbGalleryIntent.setType("image/*");
-        startActivityForResult(thumbGalleryIntent, GalleryThumb);*/
+        startActivityForResult(thumbGalleryIntent, GalleryThumb1);*/
+
+        Intent thumbGalleryIntent = new Intent();
+        thumbGalleryIntent.setAction(Intent.ACTION_GET_CONTENT);
+        thumbGalleryIntent.setType("image/*");
+
+        switch (arg0.getId()) {
+            case R.id.iv_add_thumb_img1:
+                startActivityForResult(thumbGalleryIntent, GalleryThumb1);
+                break;
+            case R.id.iv_add_thumb_img2:
+                startActivityForResult(thumbGalleryIntent, GalleryThumb2);
+                break;
+            case R.id.iv_add_thumb_img3:
+                startActivityForResult(thumbGalleryIntent, GalleryThumb3);
+                break;
+        }
 
     }
 
@@ -192,21 +202,21 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
 
         }
 
-        if (requestCode == GalleryThumb1 && resultCode == RESULT_OK && data != null){
+        if (requestCode == GalleryThumb1 && resultCode == RESULT_OK && data != null) {
 
             imageUri = data.getData();
             ivThumbImg1.setImageURI(imageUri);
 
         }
 
-        if (requestCode == GalleryThumb2 && resultCode == RESULT_OK && data != null){
+        if (requestCode == GalleryThumb2 && resultCode == RESULT_OK && data != null) {
 
             imageUri = data.getData();
             ivThumbImg1.setImageURI(imageUri);
 
         }
 
-        if (requestCode == GalleryThumb3 && resultCode == RESULT_OK && data != null){
+        if (requestCode == GalleryThumb3 && resultCode == RESULT_OK && data != null) {
 
             imageUri = data.getData();
             ivThumbImg1.setImageURI(imageUri);
