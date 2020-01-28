@@ -278,17 +278,17 @@ public class RegisterActivity extends AppCompatActivity {
     // Sign in with Google account on user device
     private void signInGoogle() {
 
-        Intent signInGoogle = mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(signInGoogle, RC_SIGN_IN);
+        //Intent signInGoogle = mGoogleSignInClient.getSignInIntent();
+        //startActivityForResult(signInGoogle, RC_SIGN_IN);
 
         // Dummy Toast Login
-        /*new Handler().postDelayed(new Runnable() {
+        new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 registerProgressBar.setVisibility(View.GONE);
                 Toast.makeText(getApplicationContext(), "Simulasi Login Sukses", Toast.LENGTH_SHORT).show();
             }
-        }, 3000);*/
+        }, 3000);
     }
 
     // Sign out google

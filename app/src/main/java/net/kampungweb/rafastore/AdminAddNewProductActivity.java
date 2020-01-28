@@ -17,7 +17,6 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.Toolbar;
 
-
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -39,17 +38,21 @@ import java.util.Objects;
 public class AdminAddNewProductActivity extends AppCompatActivity {
 
     private String categoryName, nameProduct, priceProduct, descriptionProduct, stockProduct, saveCurrentDate, saveCurrentTime;
-    private ImageView inputNewImageProduct;
+    private ImageView ivMainImageProduct, ivAddImageProduct, ivThumbImg1, ivThumbImg2, ivThumbImg3;
     private AppCompatEditText inputProductDesc;
     private EditText inputNameProduct, inputPriceProduct, inputStockProduct;
-    private AppCompatButton btnCancel, btnAddProduct;
 
     private static final int GalleryPick = 1;
+    private static final int GalleryThumb1 = 2;
+    private static final int GalleryThumb2 = 3;
+    private static final int GalleryThumb3 = 4;
+
     private Uri imageUri;
     private String productRandomKey, downloadImageUrl;
     private StorageReference productImageRef;
     private DatabaseReference productsRef;
     private ProgressDialog progressDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,42 +69,6 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         initContent();
     }
 
-    private void initContent() {
-        inputNewImageProduct = findViewById(R.id.iv_upload_image);
-        inputNameProduct = findViewById(R.id.et_name_product);
-        inputPriceProduct = findViewById(R.id.et_price_product);
-        inputProductDesc = findViewById(R.id.acet_deskripsi_product);
-        inputStockProduct = findViewById(R.id.et_stock_product);
-        btnCancel = findViewById(R.id.acb_btn_cancel);
-        btnAddProduct = findViewById(R.id.acb_btn_add_product);
-
-        progressDialog = new ProgressDialog(this);
-
-
-        // add new product
-        inputNewImageProduct.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                // open image on user device
-                openImageGallery();
-
-            }
-        });
-
-        btnAddProduct.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                validateProductData();
-
-            }
-        });
-
-
-    }
-
-
     private void initToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -111,13 +78,104 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
 
     }
 
-    private void openImageGallery() {
+    private void initContent() {
+        ivMainImageProduct = findViewById(R.id.iv_main_product_image);
+        ivAddImageProduct = findViewById(R.id.iv_add_image);
+        inputNameProduct = findViewById(R.id.et_name_product);
+        inputPriceProduct = findViewById(R.id.et_price_product);
+        inputProductDesc = findViewById(R.id.acet_deskripsi_product);
+        inputStockProduct = findViewById(R.id.et_stock_product);
+        AppCompatButton btnCancel = findViewById(R.id.acb_btn_cancel);
+        AppCompatButton btnAddProduct = findViewById(R.id.acb_btn_add_product);
 
-        // ambil image dari device pengguna
+        ivThumbImg1 = findViewById(R.id.iv_add_thumb_img1);
+        ivThumbImg2 = findViewById(R.id.iv_add_thumb_img2);
+        ivThumbImg3 = findViewById(R.id.iv_add_thumb_img3);
+
+        progressDialog = new ProgressDialog(this);
+
+
+        // add new product
+        ivAddImageProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // open image on user device
+                addMainImage();
+
+            }
+        });
+
+        // add new tumb product
+        ivThumbImg1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addImageThumb();
+            }
+        });
+
+        ivThumbImg1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addImageThumb();
+            }
+        });
+
+        ivThumbImg2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addImageThumb();
+            }
+        });
+
+        ivThumbImg3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addImageThumb();
+            }
+        });
+
+        // add product image and all description
+        btnAddProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                validateProductData();
+
+            }
+        });
+
+        // batal upload
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent cancelAddProdictIntent = new Intent(AdminAddNewProductActivity.this, AdminCategoryActivity.class);
+                startActivity(cancelAddProdictIntent);
+            }
+        });
+
+
+    }
+
+    // add first thumb image and main image
+    private void addMainImage() {
+
+        // ambil image dari gallery device pengguna
         Intent galleryIntent = new Intent();
         galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
         galleryIntent.setType("image/*");
         startActivityForResult(galleryIntent, GalleryPick);
+
+    }
+
+    // add alternative pict produk and add to thumbnail gallery
+    private void addImageThumb() {
+
+        // ambil image dari gallery device pengguna
+        /*Intent thumbGalleryIntent = new Intent();
+        thumbGalleryIntent.setAction(Intent.ACTION_GET_CONTENT);
+        thumbGalleryIntent.setType("image/*");
+        startActivityForResult(thumbGalleryIntent, GalleryThumb);*/
 
     }
 
@@ -129,8 +187,33 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         if (requestCode == GalleryPick && resultCode == RESULT_OK && data != null) {
 
             imageUri = data.getData();
-            inputNewImageProduct.setImageURI(imageUri);
+            ivAddImageProduct.setImageURI(imageUri);
+            ivMainImageProduct.setImageURI(imageUri);
+
         }
+
+        if (requestCode == GalleryThumb1 && resultCode == RESULT_OK && data != null){
+
+            imageUri = data.getData();
+            ivThumbImg1.setImageURI(imageUri);
+
+        }
+
+        if (requestCode == GalleryThumb2 && resultCode == RESULT_OK && data != null){
+
+            imageUri = data.getData();
+            ivThumbImg1.setImageURI(imageUri);
+
+        }
+
+        if (requestCode == GalleryThumb3 && resultCode == RESULT_OK && data != null){
+
+            imageUri = data.getData();
+            ivThumbImg1.setImageURI(imageUri);
+
+        }
+
+
     }
 
     // Validasi data product yang diupload

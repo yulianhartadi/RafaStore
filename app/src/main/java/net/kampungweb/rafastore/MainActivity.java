@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initLogin() {
         Button btnLogin = findViewById(R.id.btn_login);
-        Button btnRegister = findViewById(R.id.btn_register);
+        Button btnRegister = findViewById(R.id.btn_to_register);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
