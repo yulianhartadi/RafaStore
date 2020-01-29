@@ -37,8 +37,18 @@ import java.util.Objects;
 
 public class AdminAddNewProductActivity extends AppCompatActivity {
 
-    private String categoryName, nameProduct, priceProduct, descriptionProduct, stockProduct, saveCurrentDate, saveCurrentTime;
-    private ImageView ivMainImageProduct, ivAddImageProduct, ivThumbImg1, ivThumbImg2, ivThumbImg3;
+    private String categoryName;
+    private String nameProduct;
+    private String priceProduct;
+    private String descriptionProduct;
+    private String stockProduct;
+    private String saveCurrentDate;
+    private String saveCurrentTime;
+    private ImageView ivMainImageProduct;
+    private ImageView ivAddImageProduct;
+    private ImageView ivThumbImg1;
+    private ImageView ivThumbImg2;
+    private ImageView ivThumbImg3;
     private AppCompatEditText inputProductDesc;
     private EditText inputNameProduct, inputPriceProduct, inputStockProduct;
 
@@ -48,7 +58,11 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
     private static final int GalleryThumb3 = 4;
 
     private Uri imageUri;
-    private String productRandomKey, downloadImageUrl;
+    private String productRandomKey;
+    private String downloadImageUrl;
+    private String imageThumb1;
+    private String imageThumb2;
+    private String imageThumb3;
     private StorageReference productImageRef;
     private DatabaseReference productsRef;
     private ProgressDialog progressDialog;
@@ -60,13 +74,16 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_add_new_product);
 
-        categoryName = getIntent().getExtras().get("Category").toString();
+        categoryName = Objects.requireNonNull(Objects.requireNonNull(getIntent().getExtras()).get("Category")).toString();
 
         // connect to storage Firebase
         productImageRef = FirebaseStorage.getInstance().getReference().child("Product Images");
         productsRef = FirebaseDatabase.getInstance().getReference().child("Products");
 
+        //panggil content
         initToolbar();
+
+        //panggil content
         initContent();
     }
 
@@ -79,6 +96,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
 
     }
 
+    //initial content
     private void initContent() {
         ivMainImageProduct = findViewById(R.id.iv_main_product_image);
         ivAddImageProduct = findViewById(R.id.iv_add_image);
@@ -100,10 +118,8 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         ivAddImageProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 // open image on user device
                 addMainImage();
-
             }
         });
 
@@ -112,6 +128,12 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // add image from gallery
+                Toast.makeText(AdminAddNewProductActivity.this, "Clicked", Toast.LENGTH_SHORT).show();
+                // ambil image dari gallery device pengguna
+                Intent galleryIntent = new Intent();
+                galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
+                galleryIntent.setType("image/*");
+                startActivityForResult(galleryIntent, GalleryThumb1);
             }
         });
 
@@ -119,6 +141,12 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // add image from gallery
+                Toast.makeText(AdminAddNewProductActivity.this, "Clicked", Toast.LENGTH_SHORT).show();
+                // ambil image dari gallery device pengguna
+                Intent galleryIntent = new Intent();
+                galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
+                galleryIntent.setType("image/*");
+                startActivityForResult(galleryIntent, GalleryThumb2);
             }
         });
 
@@ -126,6 +154,12 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // add image from gallery
+                Toast.makeText(AdminAddNewProductActivity.this, "Clicked", Toast.LENGTH_SHORT).show();
+                // ambil image dari gallery device pengguna
+                Intent galleryIntent = new Intent();
+                galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
+                galleryIntent.setType("image/*");
+                startActivityForResult(galleryIntent, GalleryThumb3);
             }
         });
 
@@ -143,8 +177,8 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent cancelAddProdictIntent = new Intent(AdminAddNewProductActivity.this, AdminCategoryActivity.class);
-                startActivity(cancelAddProdictIntent);
+                Intent cancelAddProductIntent = new Intent(AdminAddNewProductActivity.this, AdminCategoryActivity.class);
+                startActivity(cancelAddProductIntent);
             }
         });
 
@@ -163,19 +197,14 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
     }
 
     // add alternative pict produk and add to thumbnail gallery
-    private void addImageThumb(final View arg0) {
-
-        // ambil image dari gallery device pengguna
-        /*Intent thumbGalleryIntent = new Intent();
-        thumbGalleryIntent.setAction(Intent.ACTION_GET_CONTENT);
-        thumbGalleryIntent.setType("image/*");
-        startActivityForResult(thumbGalleryIntent, GalleryThumb1);*/
+   /* private void addImageThumb() {
 
         Intent thumbGalleryIntent = new Intent();
         thumbGalleryIntent.setAction(Intent.ACTION_GET_CONTENT);
         thumbGalleryIntent.setType("image/*");
 
-        switch (arg0.getId()) {
+        View imageThumbView = new View(this);
+        switch (imageThumbView.getId()) {
             case R.id.iv_add_thumb_img1:
                 startActivityForResult(thumbGalleryIntent, GalleryThumb1);
                 break;
@@ -187,7 +216,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
                 break;
         }
 
-    }
+    }*/
 
     // Update Activity if image product successfull updated
     @Override
@@ -212,17 +241,16 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         if (requestCode == GalleryThumb2 && resultCode == RESULT_OK && data != null) {
 
             imageUri = data.getData();
-            ivThumbImg1.setImageURI(imageUri);
+            ivThumbImg2.setImageURI(imageUri);
 
         }
 
         if (requestCode == GalleryThumb3 && resultCode == RESULT_OK && data != null) {
 
             imageUri = data.getData();
-            ivThumbImg1.setImageURI(imageUri);
+            ivThumbImg3.setImageURI(imageUri);
 
         }
-
 
     }
 
@@ -231,7 +259,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
 
         nameProduct = inputNameProduct.getText().toString();
         priceProduct = inputPriceProduct.getText().toString();
-        descriptionProduct = inputProductDesc.getText().toString();
+        descriptionProduct = Objects.requireNonNull(inputProductDesc.getText()).toString();
         stockProduct = inputStockProduct.getText().toString();
 
         if (imageUri == null) {
@@ -283,7 +311,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
         saveCurrentTime = currentTime.format(calendar.getTime());
 
-        productRandomKey = saveCurrentDate + saveCurrentTime;
+        productRandomKey = "Product ditambahkan tgl : " + saveCurrentDate + " jam : " + saveCurrentTime;
 
         final StorageReference filePath = productImageRef.child(imageUri.getLastPathSegment() + productRandomKey + ".jpg");
 
@@ -304,6 +332,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
                 Toast.makeText(AdminAddNewProductActivity.this, "Produk sukses di upload", Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
 
                 Task<Uri> uriTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                     @Override
@@ -314,6 +343,10 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
                         }
 
                         downloadImageUrl = filePath.getDownloadUrl().toString();
+                        imageThumb1 = filePath.getDownloadUrl().toString();
+                        imageThumb2 = filePath.getDownloadUrl().toString();
+                        imageThumb3 = filePath.getDownloadUrl().toString();
+
                         return filePath.getDownloadUrl();
 
                     }
@@ -323,6 +356,8 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
 
                             Toast.makeText(AdminAddNewProductActivity.this, "Produk sukses tersimpan di database", Toast.LENGTH_SHORT).show();
+                            progressDialog.dismiss();
+
                             saveProductInfoToDatabase();
                         }
                     }
@@ -341,6 +376,9 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         productMap.put("time", saveCurrentTime);
         productMap.put("category", categoryName);
         productMap.put("image", downloadImageUrl);
+        productMap.put("image alt1", imageThumb1);
+        productMap.put("image alt2", imageThumb2);
+        productMap.put("image alt3", imageThumb3);
         productMap.put("product name", nameProduct);
         productMap.put("product price", priceProduct);
         productMap.put("product description", descriptionProduct);

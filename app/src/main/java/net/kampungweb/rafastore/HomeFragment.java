@@ -155,7 +155,7 @@ public class HomeFragment extends Fragment {
         for (int i = 0; i < arrayImagePlace.length; i++) {
             ImageSlider obj = new ImageSlider();
             obj.image = arrayImagePlace[i];
-            obj.imageDrw = getResources().getDrawable(obj.image);
+//            obj.imageDrw = getResources().getDrawable(obj.image);
             obj.name = arrayTitlePlace[i];
             obj.brief = arrayBriefPlace[i];
             items.add(obj);
