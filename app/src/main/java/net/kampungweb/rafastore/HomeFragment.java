@@ -20,16 +20,25 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.balysv.materialripple.MaterialRippleLayout;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+import net.kampungweb.rafastore.adapter.AdapterItemProduct;
 import net.kampungweb.rafastore.model.ImageSlider;
+import net.kampungweb.rafastore.model.Products;
 import net.kampungweb.rafastore.utils.Tools;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import io.paperdb.Paper;
 
@@ -46,6 +55,9 @@ public class HomeFragment extends Fragment {
     private LinearLayout layoutDots;
     private Button btnMoreTerlaris, btnMoreTerbaru, btnMoreLainnya;
 
+    private DatabaseReference productRef;
+    private RecyclerView recyclerView;
+    RecyclerView.LayoutManager layoutManager;
 
     private static int[] arrayImagePlace = {
             R.drawable.image_20,
@@ -82,7 +94,10 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         // paper db
-        Paper.init(getContext());
+        Paper.init(Objects.requireNonNull(getContext()));
+
+        //init product reference db
+        productRef = FirebaseDatabase.getInstance().getReference().child("Products");
 
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_home, container, false);
@@ -93,6 +108,13 @@ public class HomeFragment extends Fragment {
         ImageButton imgfavorit = view.findViewById(R.id.btn_favorite);
         ImageButton imgMessage = view.findViewById(R.id.btn_message);
         ImageButton imgNotification = view.findViewById(R.id.btn_notif);
+
+        //init recyclerView content terlaris
+        recyclerView = view.findViewById(R.id.rv_produk_terlaris);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+
 
         imgfavorit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -317,6 +339,49 @@ public class HomeFragment extends Fragment {
         }
     }
 
+
+    @Override
+    public void onStart() {
+
+        super.onStart();
+
+        //ambil product di firebase realtimedb
+        FirebaseRecyclerOptions<Products> options = new FirebaseRecyclerOptions.Builder<Products>()
+                .setQuery(productRef, Products.class)
+                .build();
+
+        FirebaseRecyclerAdapter<Products, AdapterItemProduct> adapter =
+                new FirebaseRecyclerAdapter<Products, AdapterItemProduct>(options) {
+                    @Override
+                    protected void onBindViewHolder(@NonNull AdapterItemProduct adapterItemProduct, int i, @NonNull Products products) {
+
+                        adapterItemProduct.tvProductName.setText(products.getProductName());
+                        adapterItemProduct.tvProductPrice.setText(products.getProductPrice());
+
+                        //load image from firebase using Glide?
+
+                    }
+
+                    @NonNull
+                    @Override
+                    public AdapterItemProduct onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+                        // inflate rv produk terlaris with single item product
+                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_item_product, parent, false);
+                        return new AdapterItemProduct(view);
+
+                        // code lama tapi warning
+                        /*AdapterItemProduct adapterItemProduct = new AdapterItemProduct(view);
+                        return adapterItemProduct;*/
+                    }
+
+
+                };
+
+        recyclerView.setAdapter(adapter);
+        adapter.startListening();
+
+    }
 
     @Override
     public void onDestroy() {

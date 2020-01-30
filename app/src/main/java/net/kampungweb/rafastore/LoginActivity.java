@@ -120,6 +120,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    // check validity user form
     private void loginAction() {
 
         final String phone = Objects.requireNonNull(tiePhoneNumber.getText()).toString();
@@ -135,6 +136,7 @@ public class LoginActivity extends AppCompatActivity {
             progress_bar.setVisibility(View.INVISIBLE);
         } else {
             fabLogin.setAlpha(0f);
+            // allow user to login success
             allowAccessToAccount(phone, password);
         }
     }
@@ -165,19 +167,24 @@ public class LoginActivity extends AppCompatActivity {
                         if (userData.getPassword().equals(password)) {
 
                             if (parentDbName.equals("Users")) {
-                                Toast.makeText(LoginActivity.this, "Login User", Toast.LENGTH_SHORT).show();
+
+                                Toast.makeText(LoginActivity.this, "As User", Toast.LENGTH_SHORT).show();
                                 progress_bar.setVisibility(View.GONE);
 
                                 // Home as users
                                 Intent homeIntent = new Intent(LoginActivity.this, HomeActivity.class);
+
+                                // catch user data
+                                Prevalent.currentOnlineUsers = userData;
                                 startActivity(homeIntent);
 
                             } else if (parentDbName.equals("Admins")) {
-                                Toast.makeText(LoginActivity.this, "Login Admin", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "As Admin", Toast.LENGTH_SHORT).show();
                                 progress_bar.setVisibility(View.GONE);
 
                                 // Home as admin
                                 Intent homeIntent = new Intent(LoginActivity.this, AdminCategoryActivity.class);
+                                Prevalent.currentOnlineUsers = userData;
                                 startActivity(homeIntent);
                             }
 
@@ -202,6 +209,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    // automatically allow user if they already login before
     private void alreadyLoginAllowAccess(final String phone, final String password) {
         final DatabaseReference rootRef;
         rootRef = FirebaseDatabase.getInstance().getReference();
@@ -220,19 +228,16 @@ public class LoginActivity extends AppCompatActivity {
                         if (userData.getPassword().equals(password)) {
 
                             if (parentDbName.equals("Users")) {
-                                Toast.makeText(LoginActivity.this, "Sebagai User", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "Already login as a User", Toast.LENGTH_SHORT).show();
                                 progress_bar.setVisibility(View.GONE);
 
                                 // Home as users
                                 Intent homeIntent = new Intent(LoginActivity.this, HomeActivity.class);
-                                startActivity(homeIntent);
-                            } else if (parentDbName.equals("Admins")) {
-                                Toast.makeText(LoginActivity.this, "Sebagai Admin", Toast.LENGTH_SHORT).show();
-                                progress_bar.setVisibility(View.GONE);
 
-                                // Home as admin
-                                Intent homeIntent = new Intent(LoginActivity.this, AdminCategoryActivity.class);
+                                //catch user data
+                                Prevalent.currentOnlineUsers = userData;
                                 startActivity(homeIntent);
+
                             }
 
                         } else {
@@ -257,7 +262,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    // if user click back button to reload the previious activity
+    // if user click back button to reload the previous activity
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -272,4 +277,3 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(getIntent());
     }
 }
-

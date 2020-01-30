@@ -68,7 +68,6 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -196,27 +195,6 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
 
     }
 
-    // add alternative pict produk and add to thumbnail gallery
-   /* private void addImageThumb() {
-
-        Intent thumbGalleryIntent = new Intent();
-        thumbGalleryIntent.setAction(Intent.ACTION_GET_CONTENT);
-        thumbGalleryIntent.setType("image/*");
-
-        View imageThumbView = new View(this);
-        switch (imageThumbView.getId()) {
-            case R.id.iv_add_thumb_img1:
-                startActivityForResult(thumbGalleryIntent, GalleryThumb1);
-                break;
-            case R.id.iv_add_thumb_img2:
-                startActivityForResult(thumbGalleryIntent, GalleryThumb2);
-                break;
-            case R.id.iv_add_thumb_img3:
-                startActivityForResult(thumbGalleryIntent, GalleryThumb3);
-                break;
-        }
-
-    }*/
 
     // Update Activity if image product successfull updated
     @Override
@@ -376,13 +354,13 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         productMap.put("time", saveCurrentTime);
         productMap.put("category", categoryName);
         productMap.put("image", downloadImageUrl);
-        productMap.put("image alt1", imageThumb1);
-        productMap.put("image alt2", imageThumb2);
-        productMap.put("image alt3", imageThumb3);
-        productMap.put("product name", nameProduct);
-        productMap.put("product price", priceProduct);
-        productMap.put("product description", descriptionProduct);
-        productMap.put("product stock", stockProduct);
+        productMap.put("imageAlt1", imageThumb1);
+        productMap.put("imageAlt2", imageThumb2);
+        productMap.put("imageAlt3", imageThumb3);
+        productMap.put("productName", nameProduct);
+        productMap.put("productPrice", priceProduct);
+        productMap.put("productDescription", descriptionProduct);
+        productMap.put("productStock", stockProduct);
 
         productsRef.child(productRandomKey).updateChildren(productMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
