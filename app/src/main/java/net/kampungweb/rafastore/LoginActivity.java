@@ -171,6 +171,7 @@ public class LoginActivity extends AppCompatActivity {
                                 // Home as users
                                 Intent homeIntent = new Intent(LoginActivity.this, HomeActivity.class);
                                 startActivity(homeIntent);
+
                             } else if (parentDbName.equals("Admins")) {
                                 Toast.makeText(LoginActivity.this, "Login Admin", Toast.LENGTH_SHORT).show();
                                 progress_bar.setVisibility(View.GONE);

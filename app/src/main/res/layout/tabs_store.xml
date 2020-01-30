@@ -15,7 +15,6 @@
         android:layout_height="@dimen/spacing_middle" />
 
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -43,11 +42,11 @@
 
     </LinearLayout>
 
+    <!-- Produk terlaris -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="@dimen/spacing_medium"
         android:visibility="visible">
 
         <HorizontalScrollView
@@ -57,6 +56,12 @@
             android:minHeight="?attr/actionBarSize"
             android:scrollbars="none">
 
+            <!--<androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_home_terlaris"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />-->
+
+            <!-- thumb produk terlaris -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -223,8 +228,8 @@
                             android:gravity="center"
                             android:orientation="horizontal"
                             android:paddingStart="@dimen/spacing_large"
-                            android:paddingEnd="0dp"
                             android:paddingTop="@dimen/spacing_xmedium"
+                            android:paddingEnd="0dp"
                             android:paddingBottom="@dimen/spacing_large">
 
                             <LinearLayout
@@ -254,9 +259,9 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:background="?attr/selectableItemBackgroundBorderless"
+                                android:contentDescription="@string/detail_produk"
                                 android:padding="@dimen/spacing_medium"
                                 android:src="@drawable/ic_more_vert"
-                                android:contentDescription="@string/detail_produk"
                                 android:tint="@color/grey_40"
                                 app:srcCompat="@drawable/ic_more_vert" />
 

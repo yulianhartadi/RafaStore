@@ -31,6 +31,8 @@ import net.kampungweb.rafastore.utils.Tools;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.paperdb.Paper;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -78,6 +80,10 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        // paper db
+        Paper.init(getContext());
+
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_home, container, false);
 

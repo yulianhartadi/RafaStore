@@ -1,6 +1,7 @@
 package net.kampungweb.rafastore;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -42,7 +43,17 @@ public class UserFragment extends Fragment {
             public void onClick(View view) {
                 Toast.makeText(getActivity(), "Log out", Toast.LENGTH_SHORT).show();
                 Paper.book().destroy();
+
+
+                //alternative jump activity
+                Intent loginIntent = new Intent(getContext(), LoginActivity.class);
+                loginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(loginIntent);
+
+                //close app
                 Objects.requireNonNull(getActivity()).moveTaskToBack(true);
+                getActivity().finish();
+
             }
         });
 
