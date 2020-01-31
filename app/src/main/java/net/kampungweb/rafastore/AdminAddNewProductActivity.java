@@ -76,7 +76,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         categoryName = Objects.requireNonNull(Objects.requireNonNull(getIntent().getExtras()).get("Category")).toString();
 
         // connect to storage Firebase
-        productImageRef = FirebaseStorage.getInstance().getReference().child("Product Images");
+        productImageRef = FirebaseStorage.getInstance().getReference().child("ProductImages");
         productsRef = FirebaseDatabase.getInstance().getReference().child("Products");
 
         //panggil content
@@ -283,13 +283,13 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
 
         Calendar calendar = Calendar.getInstance();
 
-        SimpleDateFormat currentDate = new SimpleDateFormat("MM dd, yyyy");
+        SimpleDateFormat currentDate = new SimpleDateFormat("dd MM, yyyy");
         saveCurrentDate = currentDate.format(calendar.getTime());
 
         SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
         saveCurrentTime = currentTime.format(calendar.getTime());
 
-        productRandomKey = "Product ditambahkan tgl : " + saveCurrentDate + " jam : " + saveCurrentTime;
+        productRandomKey = saveCurrentDate + saveCurrentTime;
 
         final StorageReference filePath = productImageRef.child(imageUri.getLastPathSegment() + productRandomKey + ".jpg");
 
@@ -377,7 +377,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
                         } else {
 
                             progressDialog.dismiss();
-                            String message = task.getException().toString();
+                            String message = Objects.requireNonNull(task.getException()).toString();
                             Toast.makeText(AdminAddNewProductActivity.this, "Produk error : " + message, Toast.LENGTH_SHORT).show();
 
                         }

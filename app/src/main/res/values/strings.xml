@@ -42,6 +42,6 @@
     <string name="nama_produk">NAMA PRODUK</string>
     <string name="harga_product"> 120.000</string>
     <string name="user_location">Solo, Jawa Tengah</string>
-    <string name="user_fullname">Abu Abdillah</string>
+    <string name="user_fullname">User Full Name</string>
     <string name="currency">Rp.</string>
 </resources>

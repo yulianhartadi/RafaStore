@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -26,11 +27,9 @@ import io.paperdb.Paper;
  */
 public class UserFragment extends Fragment {
 
-    FloatingActionButton fabLogout;
     CircularImageView userImagePict;
-    TextView userFullName;
     TextView userLocation;
-
+    private TextView userFullName;
 
     public UserFragment() {
         // Required empty public constructor
@@ -50,15 +49,17 @@ public class UserFragment extends Fragment {
 
         //user name
         userFullName = view.findViewById(R.id.tv_user_fullname);
+        if (userFullName != null){
+            userFullName.setText(Prevalent.currentOnlineUsers.getFullName());
+        }
 
-        userFullName.setText(Prevalent.currentOnlineUsers.getFullName());
 
         //userlocation
         userLocation = view.findViewById(R.id.tv_user_location);
 
 
         // Logout fab button
-        fabLogout = view.findViewById(R.id.fab_logout);
+        FloatingActionButton fabLogout = view.findViewById(R.id.fab_logout);
         fabLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
