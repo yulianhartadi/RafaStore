@@ -2,10 +2,7 @@ package net.kampungweb.rafastore;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -13,21 +10,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import net.kampungweb.rafastore.adapter.AdapterItemProduct;
-import net.kampungweb.rafastore.model.Products;
 
 import io.paperdb.Paper;
 
 public class HomeActivity extends AppCompatActivity {
-
-
-    private BottomNavigationView bottomNav;
 
 
     @Override
@@ -36,7 +23,6 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         Paper.init(getApplicationContext());
-        //initBottomMenu();
         loadFragment(new HomeFragment());
         initBottomMenu();
 
@@ -51,7 +37,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
     private void initBottomMenu() {
-        bottomNav = findViewById(R.id.bottom_nav);
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
         bottomNav.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 

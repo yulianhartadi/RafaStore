@@ -2,60 +2,36 @@ package net.kampungweb.rafastore.model;
 
 public class Products {
 
-    private String pid;
-    private String date;
-    private String time;
     private String category;
+    private String date;
     private String image;
     private String imageAlt1;
     private String imageAlt2;
     private String imageAlt3;
+    private String pid;
+    private String productDescription;
     private String productName;
     private String productPrice;
-    private String productDescription;
     private String productStock;
+    private String time;
 
-    public Products(){
+    public Products() {
+
 
     }
 
-
-    public Products(String pid, String date, String time, String category, String image, String imageAlt1, String imageAlt2, String imageAlt3, String productName, String productPrice, String productDescription, String productStock) {
-        this.pid = pid;
-        this.date = date;
-        this.time = time;
+    public Products(String category, String date, String image, String imageAlt1, String imageAlt2, String imageAlt3, String pid, String productDescription, String productName, String productPrice, String productStock, String time) {
         this.category = category;
+        this.date = date;
         this.image = image;
         this.imageAlt1 = imageAlt1;
         this.imageAlt2 = imageAlt2;
         this.imageAlt3 = imageAlt3;
+        this.pid = pid;
+        this.productDescription = productDescription;
         this.productName = productName;
         this.productPrice = productPrice;
-        this.productDescription = productDescription;
         this.productStock = productStock;
-    }
-
-    public String getPid() {
-        return pid;
-    }
-
-    public void setPid(String pid) {
-        this.pid = pid;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
         this.time = time;
     }
 
@@ -65,6 +41,14 @@ public class Products {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getImage() {
@@ -99,6 +83,22 @@ public class Products {
         this.imageAlt3 = imageAlt3;
     }
 
+    public String getPid() {
+        return pid;
+    }
+
+    public void setPid(String pid) {
+        this.pid = pid;
+    }
+
+    public String getProductDescription() {
+        return productDescription;
+    }
+
+    public void setProductDescription(String productDescription) {
+        this.productDescription = productDescription;
+    }
+
     public String getProductName() {
         return productName;
     }
@@ -115,19 +115,19 @@ public class Products {
         this.productPrice = productPrice;
     }
 
-    public String getProductDescription() {
-        return productDescription;
-    }
-
-    public void setProductDescription(String productDescription) {
-        this.productDescription = productDescription;
-    }
-
     public String getProductStock() {
         return productStock;
     }
 
     public void setProductStock(String productStock) {
         this.productStock = productStock;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

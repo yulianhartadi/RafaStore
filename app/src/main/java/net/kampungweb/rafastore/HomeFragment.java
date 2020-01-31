@@ -26,10 +26,13 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.balysv.materialripple.MaterialRippleLayout;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 import net.kampungweb.rafastore.adapter.AdapterItemProduct;
 import net.kampungweb.rafastore.model.ImageSlider;
@@ -56,6 +59,7 @@ public class HomeFragment extends Fragment {
     private Button btnMoreTerlaris, btnMoreTerbaru, btnMoreLainnya;
 
     private DatabaseReference productRef;
+
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
 
@@ -105,6 +109,7 @@ public class HomeFragment extends Fragment {
         layoutDots = view.findViewById(R.id.layout_dots);
         viewPager = view.findViewById(R.id.vp_main_pager);
         adapterImageSlider = new AdapterImageSlider(getActivity(), new ArrayList<ImageSlider>());
+
         ImageButton imgfavorit = view.findViewById(R.id.btn_favorite);
         ImageButton imgMessage = view.findViewById(R.id.btn_message);
         ImageButton imgNotification = view.findViewById(R.id.btn_notif);
@@ -114,7 +119,6 @@ public class HomeFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
-
 
         imgfavorit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -353,12 +357,24 @@ public class HomeFragment extends Fragment {
         FirebaseRecyclerAdapter<Products, AdapterItemProduct> adapter =
                 new FirebaseRecyclerAdapter<Products, AdapterItemProduct>(options) {
                     @Override
-                    protected void onBindViewHolder(@NonNull AdapterItemProduct adapterItemProduct, int i, @NonNull Products products) {
+                    protected void onBindViewHolder(@NonNull AdapterItemProduct holder, int position, @NonNull Products products) {
 
-                        adapterItemProduct.tvProductName.setText(products.getProductName());
-                        adapterItemProduct.tvProductPrice.setText(products.getProductPrice());
+                        holder.tvProductName.setText(products.getProductName());
+                        holder.tvProductPrice.setText(products.getProductPrice());
 
-                        //load image from firebase using Glide?
+
+                        //test load image from firebase using Glide?
+
+                        //test load image using picasso
+                        /*Picasso.get()
+                                .load(products.getImage())
+                                //.placeholder(R.drawable.image_shop_1)
+                                .error(R.drawable.ic_whatshot)
+                                .resize(180,180)
+                                .centerCrop()
+                                .into(holder.imgMainItemProduct);
+*/
+
 
                     }
 
