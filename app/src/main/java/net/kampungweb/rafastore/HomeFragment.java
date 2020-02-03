@@ -29,8 +29,10 @@ import androidx.viewpager.widget.ViewPager;
 import com.balysv.materialripple.MaterialRippleLayout;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import net.kampungweb.rafastore.adapter.AdapterItemProduct;
@@ -57,6 +59,7 @@ public class HomeFragment extends Fragment {
     private LinearLayout layoutDots;
     private Button btnMoreTerlaris, btnMoreTerbaru, btnMoreLainnya;
     private DatabaseReference productRef;
+    private StorageReference imgProductStorage;
 
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
@@ -100,6 +103,8 @@ public class HomeFragment extends Fragment {
 
         //init product reference db
         productRef = FirebaseDatabase.getInstance().getReference().child("Products");
+        //imgProductStorage = StorageReference
+
 
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_home, container, false);
@@ -362,7 +367,6 @@ public class HomeFragment extends Fragment {
                         holder.tvProductName.setText(products.getProductName());
                         holder.tvProductPrice.setText(products.getProductPrice());
 
-
                         //test load image from firebase using Glide?
                         /*Glide.with(getActivity())
                                 .load(products.getImage())
@@ -378,7 +382,6 @@ public class HomeFragment extends Fragment {
                                 .centerCrop()
                                 .into(holder.imgMainItemProduct);
                         Log.v("linkurl", products.getImage());
-
 
                     }
 

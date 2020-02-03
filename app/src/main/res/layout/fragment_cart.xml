@@ -679,6 +679,7 @@
                     android:background="@color/grey_20" />
 
                 <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/acb_btn_selesai_belanja"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacing_medium"
@@ -686,7 +687,7 @@
                     android:background="@drawable/btn_rounded_black"
                     android:paddingLeft="@dimen/spacing_mlarge"
                     android:paddingRight="@dimen/spacing_mlarge"
-                    android:text="SELESAI BELANJA"
+                    android:text="@string/selesai_belanja"
                     android:textColor="@android:color/white" />
 
             </LinearLayout>

@@ -76,8 +76,8 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         categoryName = Objects.requireNonNull(Objects.requireNonNull(getIntent().getExtras()).get("Category")).toString();
 
         // connect to storage Firebase
-        productImageRef = FirebaseStorage.getInstance().getReference().child("ProductImages");
         productsRef = FirebaseDatabase.getInstance().getReference().child("Products");
+        productImageRef = FirebaseStorage.getInstance().getReference().child("ProductImages");
 
         //panggil content
         initToolbar();
@@ -103,6 +103,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         inputPriceProduct = findViewById(R.id.et_price_product);
         inputProductDesc = findViewById(R.id.acet_deskripsi_product);
         inputStockProduct = findViewById(R.id.et_stock_product);
+
         AppCompatButton btnCancel = findViewById(R.id.acb_btn_cancel);
         AppCompatButton btnAddProduct = findViewById(R.id.acb_btn_add_product);
 
@@ -122,7 +123,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
             }
         });
 
-        // add new tumb product
+        // add new thumb product
         ivThumbImg1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -195,8 +196,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
 
     }
 
-
-    // Update Activity if image product successfull updated
+    // Update Activity if image product successful updated
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

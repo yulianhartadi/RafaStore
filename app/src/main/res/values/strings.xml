@@ -44,4 +44,5 @@
     <string name="user_location">Solo, Jawa Tengah</string>
     <string name="user_fullname">User Full Name</string>
     <string name="currency">Rp.</string>
+    <string name="selesai_belanja">SELESAI BELANJA</string>
 </resources>
