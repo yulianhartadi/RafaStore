@@ -14,8 +14,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
 
 import net.kampungweb.rafastore.utils.Tools;
+
+import java.util.Objects;
 
 public class AdminCategoryActivity extends AppCompatActivity {
 
@@ -155,8 +158,9 @@ public class AdminCategoryActivity extends AppCompatActivity {
         cvSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent categoryIntent = new Intent(AdminCategoryActivity.this, AdminAddNewProductActivity.class);
-                categoryIntent.putExtra("Category", "Setting");
+
+                Intent categoryIntent = new Intent(AdminCategoryActivity.this, HomeActivity.class);
+                //categoryIntent.putExtra("Category", "Setting");
                 startActivity(categoryIntent);
             }
         });
@@ -167,9 +171,9 @@ public class AdminCategoryActivity extends AppCompatActivity {
     private void initToolbar() {
         toolbar = findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_menu);
-        toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.indigo_500), PorterDuff.Mode.SRC_ATOP);
+        Objects.requireNonNull(toolbar.getNavigationIcon()).setColorFilter(getResources().getColor(R.color.indigo_500), PorterDuff.Mode.SRC_ATOP);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         Tools.setSystemBarColor(this, android.R.color.white);
         Tools.setSystemBarLight(this);
     }

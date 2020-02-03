@@ -17,16 +17,12 @@ import io.paperdb.Paper;
 public class HomeActivity extends AppCompatActivity {
 
 
-    private BottomNavigationView bottomNav;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        Paper.init(this);
-
-        //initBottomMenu();
+        Paper.init(getApplicationContext());
         loadFragment(new HomeFragment());
         initBottomMenu();
 
@@ -41,7 +37,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
     private void initBottomMenu() {
-        bottomNav = findViewById(R.id.bottom_nav);
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
         bottomNav.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 

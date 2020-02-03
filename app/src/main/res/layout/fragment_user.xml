@@ -27,7 +27,7 @@
                 android:src="@drawable/image_19" />
 
             <com.mikhaellopez.circularimageview.CircularImageView
-                android:id="@+id/image"
+                android:id="@+id/civ_user_pict_profile"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:layout_marginTop="-45dp"
@@ -39,10 +39,11 @@
                 app:civ_shadow_radius="0" />
 
             <TextView
+                android:id="@+id/tv_user_fullname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_middle"
-                android:text="Abu Abdillah"
+                android:text="@string/user_fullname"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
                 android:textColor="@color/grey_90" />
 
@@ -57,14 +58,14 @@
                     android:layout_width="@dimen/spacing_large"
                     android:layout_height="@dimen/spacing_large"
                     android:layout_marginEnd="@dimen/spacing_medium"
-                    android:layout_marginRight="@dimen/spacing_medium"
                     android:tint="@color/grey_40"
                     app:srcCompat="@drawable/ic_location_on" />
 
                 <TextView
+                    android:id="@+id/tv_user_location"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Solo, Jawa Tengah"
+                    android:text="@string/user_location"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textColor="@color/grey_40" />
 

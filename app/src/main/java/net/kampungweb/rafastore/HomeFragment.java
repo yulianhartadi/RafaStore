@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,16 +21,28 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.balysv.materialripple.MaterialRippleLayout;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
+import net.kampungweb.rafastore.adapter.AdapterItemProduct;
 import net.kampungweb.rafastore.model.ImageSlider;
+import net.kampungweb.rafastore.model.Products;
 import net.kampungweb.rafastore.utils.Tools;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
+import io.paperdb.Paper;
 
 
 /**
@@ -43,7 +56,10 @@ public class HomeFragment extends Fragment {
     private ViewPager viewPager;
     private LinearLayout layoutDots;
     private Button btnMoreTerlaris, btnMoreTerbaru, btnMoreLainnya;
+    private DatabaseReference productRef;
 
+    private RecyclerView recyclerView;
+    RecyclerView.LayoutManager layoutManager;
 
     private static int[] arrayImagePlace = {
             R.drawable.image_20,
@@ -78,12 +94,27 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        //init paper db
+        Paper.init(Objects.requireNonNull(getContext()));
+
+        //init product reference db
+        productRef = FirebaseDatabase.getInstance().getReference().child("Products");
+
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+        // Main Top Slider
         layoutDots = view.findViewById(R.id.layout_dots);
         viewPager = view.findViewById(R.id.vp_main_pager);
         adapterImageSlider = new AdapterImageSlider(getActivity(), new ArrayList<ImageSlider>());
+
+        //init recyclerView content terlaris
+        recyclerView = view.findViewById(R.id.rv_produk_terlaris);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+
         ImageButton imgfavorit = view.findViewById(R.id.btn_favorite);
         ImageButton imgMessage = view.findViewById(R.id.btn_message);
         ImageButton imgNotification = view.findViewById(R.id.btn_notif);
@@ -198,7 +229,7 @@ public class HomeFragment extends Fragment {
 
     }
 
-    //Bottom Dot Putih
+    //bottom dots inside main slider
     private void addBottomDots(LinearLayout layoutDots, int size, int current) {
         ImageView[] dots = new ImageView[size];
 
@@ -311,6 +342,63 @@ public class HomeFragment extends Fragment {
         }
     }
 
+
+    @Override
+    public void onStart() {
+
+        super.onStart();
+
+
+        //ambil product di firebase realtimedb
+        FirebaseRecyclerOptions<Products> options = new FirebaseRecyclerOptions.Builder<Products>()
+                .setQuery(productRef, Products.class)
+                .build();
+
+        FirebaseRecyclerAdapter<Products, AdapterItemProduct> adapter =
+                new FirebaseRecyclerAdapter<Products, AdapterItemProduct>(options) {
+                    @Override
+                    protected void onBindViewHolder(@NonNull final AdapterItemProduct holder, int position, @NonNull final Products products) {
+
+                        holder.tvProductName.setText(products.getProductName());
+                        holder.tvProductPrice.setText(products.getProductPrice());
+
+
+                        //test load image from firebase using Glide?
+                        /*Glide.with(getActivity())
+                                .load(products.getImage())
+                                .into(holder.imgMainItemProduct);*/
+
+                        //test load image using picasso
+
+                        Picasso.get()
+                                .load(products.getImage())
+                                //.placeholder(R.drawable.image_shop_1)
+                                .error(R.drawable.ic_whatshot)
+                                .resize(150, 150)
+                                .centerCrop()
+                                .into(holder.imgMainItemProduct);
+                        Log.v("linkurl", products.getImage());
+
+
+                    }
+
+                    @NonNull
+                    @Override
+                    public AdapterItemProduct onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+                        // inflate rv produk terlaris with single item product
+                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_item_product, parent, false);
+                        return new AdapterItemProduct(view);
+
+                    }
+
+
+                };
+
+        recyclerView.setAdapter(adapter);
+        adapter.startListening();
+
+    }
 
     @Override
     public void onDestroy() {

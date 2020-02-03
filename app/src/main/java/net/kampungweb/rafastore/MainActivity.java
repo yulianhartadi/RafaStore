@@ -70,12 +70,17 @@ public class MainActivity extends AppCompatActivity {
 
                                 // Home as users
                                 Intent intent = new Intent(MainActivity.this, AdminCategoryActivity.class);
+
+                                // keep data for view on their profile
+                                Prevalent.currentOnlineUsers = userData;
                                 startActivity(intent);
                             } else if (parentDbName.equals("Users")) {
                                 Toast.makeText(MainActivity.this, "Sebagai User", Toast.LENGTH_SHORT).show();
 
                                 // Home as admin
                                 Intent homeIntent = new Intent(MainActivity.this, HomeActivity.class);
+                                // keep data for view on their profile
+                                Prevalent.currentOnlineUsers = userData;
                                 startActivity(homeIntent);
                             }
 
