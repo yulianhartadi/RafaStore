@@ -18,8 +18,6 @@
 
     <string name="title_what_news">What\'s News</string>
     <string name="title_category">Categories</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="detail_produk">Detail Produk</string>
     <string name="terlaris">Terlaris</string>
@@ -45,4 +43,27 @@
     <string name="user_fullname">User Full Name</string>
     <string name="currency">Rp.</string>
     <string name="selesai_belanja">SELESAI BELANJA</string>
+    <string name="checkout">Checkout</string>
+    <string name="pengiriman">Pengiriman</string>
+    <string name="pembayaran">Pembayaran</string>
+    <string name="konfirmasi">Konfirmasi</string>
+    <string name="detail_kontak">DETAIL KONTAK</string>
+    <string name="alamat_pengiriman">ALAMAT PENGIRIMAN</string>
+    <string name="nama">Nama</string>
+    <string name="dummy_name">Abu Abdillah</string>
+    <string name="email">Email</string>
+    <string name="dummy_email">abu.abdillah@mail.com</string>
+    <string name="no_telp">No_Telp</string>
+    <string name="dummy_phone_number">(859) 261-0876</string>
+    <string name="alamat">Alamat</string>
+    <string name="dummy_alamat">GG. Perkutut 12a</string>
+    <string name="negara">Negara</string>
+    <string name="dummy_negara">Indonesia</string>
+    <string name="kode_pos">Kode Pos</string>
+    <string name="dummy_kodepos">41071</string>
+    <string name="kota">Kota</string>
+    <string name="dummy_kota">Sukoharjo</string>
+    <string name="provinsi">Provinsi</string>
+    <string name="dummy_provinsi">Jawa Tengah</string>
+    <string name="alamat_lanjutan">Waringinrejo, Cemani, Grogol</string>
 </resources>

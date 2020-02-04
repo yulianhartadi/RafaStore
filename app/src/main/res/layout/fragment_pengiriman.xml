@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PengirimanFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_large">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/detail_kontak"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:textColor="@color/grey_40"
+                app:fontFamily="sans-serif-medium" />
+
+
+            <EditText
+                style="@style/EditText.Flat.Grey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:autofillHints="@string/dummy_name"
+                android:background="@drawable/edit_text_round_bg_outline"
+                android:hint="@string/nama"
+                android:inputType="textPersonName"
+                android:minHeight="@dimen/spacing_xmlarge"
+                android:text="@string/dummy_name" />
+
+            <EditText
+                style="@style/EditText.Flat.Grey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_middle"
+                android:autofillHints="@string/dummy_email"
+                android:background="@drawable/edit_text_round_bg_outline"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:minHeight="@dimen/spacing_xmlarge"
+                android:text="@string/dummy_email" />
+
+            <EditText
+                style="@style/EditText.Flat.Grey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_middle"
+                android:autofillHints="@string/dummy_phone_number"
+                android:background="@drawable/edit_text_round_bg_outline"
+                android:hint="@string/no_telp"
+                android:inputType="phone"
+                android:minHeight="@dimen/spacing_xmlarge"
+                android:text="@string/dummy_phone_number" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:text="@string/alamat_pengiriman"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:textColor="@color/grey_40"
+                app:fontFamily="sans-serif-medium" />
+
+            <EditText
+                style="@style/EditText.Flat.Grey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:autofillHints="@string/alamat"
+                android:background="@drawable/edit_text_round_bg_outline"
+                android:hint="@string/alamat"
+                android:inputType="text"
+                android:minHeight="@dimen/spacing_xmlarge"
+                android:text="@string/dummy_alamat" />
+
+            <EditText
+                style="@style/EditText.Flat.Grey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:autofillHints="@string/alamat_lanjutan"
+                android:background="@drawable/edit_text_round_bg_outline"
+                android:hint="@string/alamat_lanjutan"
+                android:inputType="text"
+                android:minHeight="@dimen/spacing_xmlarge"
+                android:text="@string/alamat_lanjutan" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_middle"
+                android:orientation="horizontal">
+
+                <EditText
+                    style="@style/EditText.Flat.Grey"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:autofillHints="@string/dummy_negara"
+                    android:background="@drawable/edit_text_round_bg_outline"
+                    android:drawableEnd="@drawable/ic_expand_arrow"
+                    android:hint="@string/negara"
+                    android:inputType="text"
+                    android:minHeight="@dimen/spacing_xmlarge"
+                    android:text="@string/dummy_negara" />
+
+                <View
+                    android:layout_width="@dimen/spacing_middle"
+                    android:layout_height="0dp" />
+
+                <EditText
+                    style="@style/EditText.Flat.Grey"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:autofillHints="@string/dummy_kodepos"
+                    android:background="@drawable/edit_text_round_bg_outline"
+                    android:hint="@string/kode_pos"
+                    android:inputType="number"
+                    android:minHeight="@dimen/spacing_xmlarge"
+                    android:text="@string/dummy_kodepos" />
+
+            </LinearLayout>
+
+            <EditText
+                style="@style/EditText.Flat.Grey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_middle"
+                android:autofillHints="@string/dummy_kota"
+                android:background="@drawable/edit_text_round_bg_outline"
+                android:drawableEnd="@drawable/ic_expand_arrow"
+                android:hint="@string/kota"
+                android:inputType="text"
+                android:minHeight="@dimen/spacing_xmlarge"
+                android:text="@string/dummy_kota" />
+
+            <EditText
+                style="@style/EditText.Flat.Grey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_middle"
+                android:autofillHints="@string/dummy_provinsi"
+                android:background="@drawable/edit_text_round_bg_outline"
+                android:drawableEnd="@drawable/ic_expand_arrow"
+                android:hint="@string/provinsi"
+                android:inputType="text"
+                android:minHeight="@dimen/spacing_xmlarge"
+                android:text="@string/dummy_provinsi" />
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</FrameLayout>

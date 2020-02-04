@@ -35,7 +35,6 @@ public class CartFragment extends Fragment {
         btnSelesaiBelanja.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "selesai belanja", Toast.LENGTH_SHORT).show();
                 Intent checkOutIntent = new Intent(getActivity(), CheckOutActivity.class);
                 startActivity(checkOutIntent);
             }
