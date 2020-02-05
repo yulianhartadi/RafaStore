@@ -68,7 +68,6 @@
                         android:layout_width="0dp"
                         android:layout_height="3dp"
                         android:layout_marginStart="@dimen/spacing_mxlarge"
-                        android:layout_marginLeft="@dimen/spacing_mxlarge"
                         android:layout_weight="1"
                         android:background="@color/grey_10" />
 
@@ -77,7 +76,6 @@
                         android:layout_width="0dp"
                         android:layout_height="3dp"
                         android:layout_marginEnd="@dimen/spacing_mxlarge"
-                        android:layout_marginRight="@dimen/spacing_mxlarge"
                         android:layout_weight="1"
                         android:background="@color/grey_10" />
 
@@ -86,8 +84,7 @@
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentLeft="true">
+                    android:layout_alignParentStart="true">
 
                     <ImageView
                         android:id="@+id/iv_dot_shipping"
@@ -95,6 +92,7 @@
                         android:layout_height="@dimen/spacing_smlarge"
                         android:layout_centerHorizontal="true"
                         android:background="@android:color/white"
+                        android:contentDescription="@string/pengiriman"
                         android:src="@drawable/shape_round_outline_primary" />
 
                     <TextView
@@ -117,6 +115,7 @@
                         android:id="@+id/iv_dot_payment"
                         android:layout_width="@dimen/spacing_smlarge"
                         android:layout_height="@dimen/spacing_smlarge"
+                        android:contentDescription="@string/pembayaran"
                         android:layout_centerHorizontal="true"
                         android:background="@android:color/white"
                         app:srcCompat="@drawable/shape_round_outline_primary" />
@@ -135,8 +134,7 @@
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true">
+                    android:layout_alignParentEnd="true">
 
                     <ImageView
                         android:id="@+id/iv_dot_confirm"
@@ -144,6 +142,7 @@
                         android:layout_height="@dimen/spacing_smlarge"
                         android:layout_centerHorizontal="true"
                         android:background="@android:color/white"
+                        android:contentDescription="@string/konfirmasi"
                         app:srcCompat="@drawable/shape_round_outline_primary" />
 
                     <TextView
@@ -180,6 +179,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:baselineAligned="false"
             android:orientation="horizontal">
 
             <com.balysv.materialripple.MaterialRippleLayout
@@ -193,6 +193,7 @@
                     android:layout_width="@dimen/spacing_smlarge"
                     android:layout_height="@dimen/spacing_smlarge"
                     android:layout_gravity="center"
+                    android:contentDescription="@string/BACK"
                     android:tint="@android:color/white"
                     app:srcCompat="@drawable/ic_arrow_back" />
 
@@ -224,7 +225,7 @@
                         android:layout_width="@dimen/spacing_smlarge"
                         android:layout_height="@dimen/spacing_smlarge"
                         android:layout_marginStart="@dimen/spacing_medium"
-                        android:layout_marginLeft="@dimen/spacing_medium"
+                        android:contentDescription="@string/NEXT"
                         android:rotation="180"
                         android:tint="@android:color/white"
                         app:srcCompat="@drawable/ic_arrow_back" />
