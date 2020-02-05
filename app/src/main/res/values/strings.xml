@@ -66,4 +66,16 @@
     <string name="provinsi">Provinsi</string>
     <string name="dummy_provinsi">Jawa Tengah</string>
     <string name="alamat_lanjutan">Waringinrejo, Cemani, Grogol</string>
+    <string name="dummy_alamat_full">GG. Perkutut 12a, Waringinrejo, Cemani, Grogol, Sukoharjo, Jawa Tengah, 41071</string>
+    <string name="metode_pembayaran">METODE PEMBAYARAN</string>
+    <string name="dummy_bank">Bank Mandiri</string>
+    <string name="dummy_rekening">88543 - 7043 - 2461 - 1195</string>
+    <string name="no_rekening">Card Number</string>
+    <string name="simpan_metode_pembayaran">Simpan metode pembayaran</string>
+    <string name="akun_bank">Akun Bank</string>
+    <string name="shipping_to">DIKIRIM KE:</string>
+    <string name="ubah">ubah</string>
+    <string name="detail_pembayaran">DETAIL PEMBAYARAN</string>
+    <string name="pembelian">PEMBELIAN</string>
+    <string name="dummy_nama_produk">Jam Tangan Alexandre Christi</string>
 </resources>

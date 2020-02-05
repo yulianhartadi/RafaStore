@@ -1,10 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PembayaranFragment">
 
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_large">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/metode_pembayaran"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                    android:textColor="@color/grey_40"
+                    app:fontFamily="sans-serif-medium" />
+
+                <ImageView
+                    android:layout_width="@dimen/spacing_xmlarge"
+                    android:layout_height="@dimen/spacing_large"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="@dimen/spacing_large"
+                    android:contentDescription="@string/metode_pembayaran"
+                    android:src="@drawable/ic_payment_card" />
+
+                <EditText
+                    style="@style/EditText.Flat.Grey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_middle"
+                    android:autofillHints="@string/akun_bank"
+                    android:background="@drawable/edit_text_round_bg_outline"
+                    android:drawableEnd="@drawable/ic_expand_arrow"
+                    android:hint="@string/dummy_bank"
+                    android:inputType="text"
+                    android:minHeight="@dimen/spacing_xmlarge"
+                    android:text="@string/dummy_bank" />
+
+                <EditText
+                    style="@style/EditText.Flat.Grey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_middle"
+                    android:autofillHints="@string/no_rekening"
+                    android:background="@drawable/edit_text_round_bg_outline"
+                    android:drawableEnd="@drawable/ic_credit_card_grey"
+                    android:hint="@string/no_rekening"
+                    android:inputType="number"
+                    android:minHeight="@dimen/spacing_xmlarge"
+                    android:text="@string/dummy_rekening" />
+
+                <EditText
+                    style="@style/EditText.Flat.Grey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_middle"
+                    android:autofillHints="@string/simpan_metode_pembayaran"
+                    android:background="@drawable/edit_text_round_bg_outline"
+                    android:drawableEnd="@drawable/ic_person"
+                    android:hint="@string/dummy_name"
+                    android:inputType="textPersonName"
+                    android:minHeight="@dimen/spacing_xmlarge"
+                    android:text="@string/dummy_name" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grey_10" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing_large"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/simpan_metode_pembayaran"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                    android:textColor="@color/grey_80" />
+
+                <View
+                    android:layout_width="@dimen/spacing_middle"
+                    android:layout_height="wrap_content" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    app:thumbTint="@color/switch_color_primary" />
+
+                <View
+                    android:layout_width="@dimen/spacing_middle"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 
 </FrameLayout>
