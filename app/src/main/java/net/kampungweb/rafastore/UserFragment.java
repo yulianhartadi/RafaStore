@@ -30,6 +30,7 @@ public class UserFragment extends Fragment {
     CircularImageView userImagePict;
     TextView userLocation;
     private TextView userFullName;
+    private FloatingActionButton fabMessage, fabDashboard, fabCartStatus, fabReview, fabFeed, fabLogout;
 
     public UserFragment() {
         // Required empty public constructor
@@ -44,22 +45,15 @@ public class UserFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_user, container, false);
         //Paper.init(Objects.requireNonNull(getContext()));
 
-        //user image profile pict
-        userImagePict = view.findViewById(R.id.civ_user_pict_profile);
-
-        //user name
-        userFullName = view.findViewById(R.id.tv_user_fullname);
-        /*if (userFullName != null){
-            userFullName.setText(Prevalent.currentOnlineUsers.getFullName());
-        }*/
-
-
-        //userlocation
-        userLocation = view.findViewById(R.id.tv_user_location);
-
+        //fabButton
+        fabMessage = view.findViewById(R.id.fab_message);
+        fabDashboard = view.findViewById(R.id.fab_dashboard);
+        fabCartStatus = view.findViewById(R.id.fab_cart_status);
+        fabReview = view.findViewById(R.id.fab_review);
+        fabFeed = view.findViewById(R.id.fab_feed_news);
+        fabLogout = view.findViewById(R.id.fab_logout);
 
         // Logout fab button
-        FloatingActionButton fabLogout = view.findViewById(R.id.fab_logout);
         fabLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,6 +72,42 @@ public class UserFragment extends Fragment {
 
             }
         });
+
+        // message fab button
+        fabMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), "Log out", Toast.LENGTH_SHORT).show();
+                //Paper.book().destroy();
+
+
+                //alternative jump activity
+                /*Intent logoutIntent = new Intent(getContext(), LoginActivity.class);
+                logoutIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(logoutIntent);*/
+
+                //close app
+                /*Objects.requireNonNull(getActivity()).moveTaskToBack(true);
+                getActivity().finish();*/
+
+            }
+        });
+
+        //user image profile pict
+        userImagePict = view.findViewById(R.id.civ_user_pict_profile);
+
+        //user name
+        userFullName = view.findViewById(R.id.tv_user_fullname);
+        /*if (userFullName != null){
+            userFullName.setText(Prevalent.currentOnlineUsers.getFullName());
+        }*/
+
+
+        //userlocation
+        userLocation = view.findViewById(R.id.tv_user_location);
+
+
+
 
         return view;
     }

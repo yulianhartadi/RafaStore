@@ -22,6 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_marginTop="@dimen/spacing_xxxlarge"
+                android:foreground="@color/overlay_dark_30"
                 android:scaleType="centerCrop"
                 android:src="@drawable/image_19" />
 
@@ -89,7 +90,6 @@
                     android:orientation="vertical">
 
                     <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:id="@+id/fab_message"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:clickable="true"
@@ -98,8 +98,7 @@
                         app:elevation="1dp"
                         app:fabSize="normal"
                         app:rippleColor="@color/grey_60"
-                        app:srcCompat="@drawable/ic_chat"
-                        android:focusable="true" />
+                        app:srcCompat="@drawable/ic_chat" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -118,7 +117,6 @@
                     android:orientation="vertical">
 
                     <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:id="@+id/fab_dashboard"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:clickable="true"
@@ -147,7 +145,6 @@
                     android:orientation="vertical">
 
                     <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:id="@+id/fab_cart_status"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:clickable="true"
@@ -184,7 +181,6 @@
                     android:orientation="vertical">
 
                     <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:id="@+id/fab_review"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:clickable="true"
@@ -212,7 +208,6 @@
                     android:orientation="vertical">
 
                     <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:id="@+id/fab_feed_news"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:clickable="true"
