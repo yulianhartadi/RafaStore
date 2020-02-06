@@ -27,8 +27,8 @@ import io.paperdb.Paper;
  */
 public class UserFragment extends Fragment {
 
-    CircularImageView userImagePict;
-    TextView userLocation;
+    private CircularImageView userImagePict;
+    private TextView userLocation;
     private TextView userFullName;
 
     public UserFragment() {
