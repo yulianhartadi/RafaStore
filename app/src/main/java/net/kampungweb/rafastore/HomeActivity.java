@@ -50,7 +50,6 @@ public class HomeActivity extends AppCompatActivity {
                 case R.id.nav_home:
                     fragment = new HomeFragment();
                     loadFragment(fragment);
-                    //setContentView(R.layout.activity_home);
                     return true;
                 case R.id.nav_categories:
                     fragment = new CategoriesFragment();
