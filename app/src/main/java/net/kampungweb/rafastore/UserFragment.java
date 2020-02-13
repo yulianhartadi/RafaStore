@@ -54,7 +54,7 @@ public class UserFragment extends Fragment {
         }
 
 
-        //userlocation
+        //user location
         userLocation = view.findViewById(R.id.tv_user_location);
 
 
@@ -65,7 +65,6 @@ public class UserFragment extends Fragment {
             public void onClick(View view) {
                 Toast.makeText(getActivity(), "Log out", Toast.LENGTH_SHORT).show();
                 Paper.book().destroy();
-
 
                 //alternative jump activity
                 Intent logoutIntent = new Intent(getContext(), LoginActivity.class);
