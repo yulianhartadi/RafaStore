@@ -8,10 +8,6 @@
     android:background="@color/grey_5"
     tools:context=".HomeFragment">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -31,7 +27,6 @@
                     android:orientation="vertical">
 
                     <!-- Slider Image Atas -->
-
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="75dp" />
@@ -154,6 +149,6 @@
         <!-- search bar layout -->
         <include layout="@layout/card_view_search_bar" />
 
-    </RelativeLayout>
+
 
 </FrameLayout>
