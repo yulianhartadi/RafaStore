@@ -9,13 +9,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mikhaellopez.circularimageview.CircularImageView;
-
-import net.kampungweb.rafastore.prevalent.Prevalent;
 
 import java.util.Objects;
 
@@ -49,14 +46,9 @@ public class UserFragment extends Fragment {
 
         //user name
         userFullName = view.findViewById(R.id.tv_user_fullname);
-        if (userFullName != null){
+        /*if (userFullName != null) {
             userFullName.setText(Prevalent.currentOnlineUsers.getFullName());
-        }
-
-
-        //user location
-        userLocation = view.findViewById(R.id.tv_user_location);
-
+        }*/
 
         // Logout fab button
         FloatingActionButton fabLogout = view.findViewById(R.id.fab_logout);

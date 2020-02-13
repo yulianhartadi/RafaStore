@@ -23,6 +23,7 @@
                 android:layout_height="150dp"
                 android:layout_marginTop="@dimen/spacing_xxxlarge"
                 android:contentDescription="@string/user_fullname"
+                android:foreground="@color/overlay_dark_30"
                 android:scaleType="centerCrop"
                 android:src="@drawable/image_19" />
 

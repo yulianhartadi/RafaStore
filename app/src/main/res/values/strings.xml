@@ -78,4 +78,10 @@
     <string name="detail_pembayaran">DETAIL PEMBAYARAN</string>
     <string name="pembelian">PEMBELIAN</string>
     <string name="dummy_nama_produk">Jam Tangan Alexandre Christi</string>
+    <string name="order">Pesanan</string>
+    <string name="settings">Setelan</string>
+    <string name="message">Pesan</string>
+    <string name="product_review">Ulasan</string>
+    <string name="news_feed">Feed</string>
+    <string name="log_out">Keluar</string>
 </resources>
