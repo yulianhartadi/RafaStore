@@ -214,7 +214,7 @@
                             android:orientation="vertical">
 
                             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                                android:id="@+id/fab_user_whishlist"
+                                android:id="@+id/fab_user_favorite"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:clickable="true"
@@ -288,7 +288,7 @@
 
                             <!-- Transaksi -->
                             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                                android:id="@+id/fab_pesanan"
+                                android:id="@+id/fab_user_transaksi"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:clickable="true"
@@ -310,7 +310,7 @@
 
                         </LinearLayout>
 
-                        <!-- Pembayaran -->
+                        <!-- Balance -->
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -319,7 +319,7 @@
                             android:orientation="vertical">
 
                             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                                android:id="@+id/fab_pembayaran"
+                                android:id="@+id/fab_user_balance"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:clickable="true"
@@ -340,7 +340,7 @@
                                 android:textColor="@color/grey_40" />
                         </LinearLayout>
 
-                        <!-- Favorite -->
+                        <!-- Artikel -->
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -378,7 +378,7 @@
                             android:orientation="vertical">
 
                             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                                android:id="@+id/fab_diskon"
+                                android:id="@+id/fab_voucher"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:clickable="true"

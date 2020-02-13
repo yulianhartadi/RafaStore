@@ -44,12 +44,66 @@ public class UserFragment extends Fragment {
             }
         });
 
-        // button to user whishlist
-        FloatingActionButton fabUserWhishlist = view.findViewById(R.id.fab_user_whishlist);
-        fabUserWhishlist.setOnClickListener(new View.OnClickListener() {
+        // button to user pesan
+        FloatingActionButton fabUserMessage = view.findViewById(R.id.fab_user_message);
+        fabUserMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "user whishlist", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "notif pesan", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // button to user favorite
+        FloatingActionButton fabUserFavorite = view.findViewById(R.id.fab_user_favorite);
+        fabUserFavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "user favorit", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // button to user bookmark
+        FloatingActionButton fabUserBookmark = view.findViewById(R.id.fab_user_bookmark);
+        fabUserBookmark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "user bookmark", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // button to user transaksi
+        FloatingActionButton fabUserTransaksi = view.findViewById(R.id.fab_user_transaksi);
+        fabUserTransaksi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "user transaksi", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // button to user Balance
+        FloatingActionButton fabUserBalance = view.findViewById(R.id.fab_user_balance);
+        fabUserBalance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "user balance", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // button to Articles
+        FloatingActionButton fabUserArticles = view.findViewById(R.id.fab_articles);
+        fabUserArticles.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "articles", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // button to voucher
+        FloatingActionButton fabUserVoucher = view.findViewById(R.id.fab_voucher);
+        fabUserVoucher.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "voucher", Toast.LENGTH_SHORT).show();
             }
         });
 
