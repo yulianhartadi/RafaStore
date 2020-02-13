@@ -29,7 +29,7 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:contentInsetStartWithNavigation="0dp"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:subtitle="welcome to RafaStoe"
+            app:subtitle="welcome to RafaStore"
             app:subtitleTextAppearance="@style/Base.TextAppearance.AppCompat.Caption"
             app:subtitleTextColor="@color/grey_10"
             app:title="Hi, Abu Abdillah" />
@@ -135,7 +135,7 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/spacing_medium" />
+                        android:layout_height="@dimen/spacing_middle" />
 
                     <!-- Button baris pertama -->
                     <LinearLayout
@@ -158,8 +158,8 @@
                                 android:layout_height="wrap_content"
                                 android:clickable="true"
                                 android:focusable="true"
-                                android:tint="@android:color/white"
-                                app:backgroundTint="@color/light_green_500"
+                                android:tint="@color/grey_3"
+                                app:backgroundTint="@color/light_blue_400"
                                 app:elevation="0dp"
                                 app:fabSize="mini"
                                 app:rippleColor="@android:color/white"
@@ -173,6 +173,36 @@
                                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                                 android:textColor="@color/grey_40" />
 
+                        </LinearLayout>
+
+                        <!-- Pesan -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                android:id="@+id/fab_user_message"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:tint="@color/grey_3"
+                                app:backgroundTint="@color/light_blue_400"
+                                app:elevation="0dp"
+                                app:fabSize="mini"
+                                app:rippleColor="@android:color/white"
+                                app:srcCompat="@drawable/ic_textsms" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:text="@string/message"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                                android:textColor="@color/grey_40" />
                         </LinearLayout>
 
                         <!-- Favorite -->
@@ -189,8 +219,8 @@
                                 android:layout_height="wrap_content"
                                 android:clickable="true"
                                 android:focusable="true"
-                                android:tint="@android:color/white"
-                                app:backgroundTint="@color/yellow_600"
+                                android:tint="@color/grey_3"
+                                app:backgroundTint="@color/light_blue_400"
                                 app:elevation="0dp"
                                 app:fabSize="mini"
                                 app:rippleColor="@android:color/white"
@@ -205,7 +235,6 @@
                                 android:textColor="@color/grey_40" />
                         </LinearLayout>
 
-                        <!-- Reviews -->
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -214,23 +243,129 @@
                             android:orientation="vertical">
 
                             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                                android:id="@+id/fab_user_reviews"
+                                android:id="@+id/fab_user_bookmark"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:clickable="true"
                                 android:focusable="true"
-                                android:tint="@android:color/white"
-                                app:backgroundTint="@color/orange_300"
+                                android:tint="@color/grey_3"
+                                app:backgroundTint="@color/light_blue_400"
                                 app:elevation="0dp"
                                 app:fabSize="mini"
                                 app:rippleColor="@android:color/white"
-                                app:srcCompat="@drawable/ic_textsms" />
+                                app:srcCompat="@drawable/ic_bookmark" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/spacing_medium"
-                                android:text="@string/reviews"
+                                android:text="@string/ditandai"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                                android:textColor="@color/grey_40" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!-- Baris Kedua -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_middle" />
+
+                    <!-- Button baris pertama -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:baselineAligned="false"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <!-- Transaksi -->
+                            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                android:id="@+id/fab_pesanan"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:tint="@color/grey_3"
+                                app:backgroundTint="@color/light_blue_400"
+                                app:elevation="0dp"
+                                app:fabSize="mini"
+                                app:rippleColor="@android:color/white"
+                                app:srcCompat="@drawable/ic_tab_bottom_cart" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:text="@string/transaksi"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                                android:textColor="@color/grey_40" />
+
+                        </LinearLayout>
+
+                        <!-- Pembayaran -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                android:id="@+id/fab_pembayaran"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:tint="@color/grey_3"
+                                app:backgroundTint="@color/light_blue_400"
+                                app:elevation="0dp"
+                                app:fabSize="mini"
+                                app:rippleColor="@android:color/white"
+                                app:srcCompat="@drawable/ic_payment_card" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:text="@string/balance"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                                android:textColor="@color/grey_40" />
+                        </LinearLayout>
+
+                        <!-- Favorite -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                android:id="@+id/fab_articles"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:tint="@color/grey_3"
+                                app:backgroundTint="@color/light_blue_400"
+                                app:elevation="0dp"
+                                app:fabSize="mini"
+                                app:rippleColor="@android:color/white"
+                                app:srcCompat="@drawable/ic_subject" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:text="@string/articles"
                                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                                 android:textColor="@color/grey_40" />
                         </LinearLayout>
@@ -243,23 +378,23 @@
                             android:orientation="vertical">
 
                             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                                android:id="@+id/fab_user_favorites"
+                                android:id="@+id/fab_diskon"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:clickable="true"
                                 android:focusable="true"
-                                android:tint="@android:color/white"
-                                app:backgroundTint="@color/deep_orange_300"
+                                android:tint="@color/grey_3"
+                                app:backgroundTint="@color/light_blue_400"
                                 app:elevation="0dp"
                                 app:fabSize="mini"
                                 app:rippleColor="@android:color/white"
-                                app:srcCompat="@drawable/ic_star" />
+                                app:srcCompat="@drawable/ic_discount" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/spacing_medium"
-                                android:text="@string/favorites"
+                                android:text="@string/voucher"
                                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                                 android:textColor="@color/grey_40" />
                         </LinearLayout>
@@ -306,7 +441,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/dummy_price"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                            android:textColor="@color/green_400"
+                            android:textColor="@color/light_blue_400"
                             android:textStyle="bold" />
 
                     </LinearLayout>

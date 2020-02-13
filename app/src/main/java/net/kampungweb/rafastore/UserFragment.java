@@ -54,22 +54,22 @@ public class UserFragment extends Fragment {
         });
 
         // button to user whishlist
-        FloatingActionButton fabFavorites = view.findViewById(R.id.fab_user_reviews);
+       /* FloatingActionButton fabFavorites = view.findViewById(R.id.fab_user_reviews);
         fabFavorites.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getActivity(), "user reviews", Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
 
         // button to favorites
-        FloatingActionButton fabUserFavorites = view.findViewById(R.id.fab_user_favorites);
+        /*FloatingActionButton fabUserFavorites = view.findViewById(R.id.fab_user_favorites);
         fabUserFavorites.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getActivity(), "favorites product", Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
 
 
         //user name
@@ -87,7 +87,6 @@ public class UserFragment extends Fragment {
                 Objects.requireNonNull(getActivity()).finish();
             }
         });*/
-
 
         // Logout fab button
        /* FloatingActionButton fabLogout = view.findViewById(R.id.fab_logout);

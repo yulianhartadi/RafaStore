@@ -76,7 +76,7 @@
     <string name="shipping_to">DIKIRIM KE:</string>
     <string name="ubah">ubah</string>
     <string name="detail_pembayaran">DETAIL PEMBAYARAN</string>
-    <string name="pembelian">PEMBELIAN</string>
+    <string name="pembelian">Pembelian</string>
     <string name="dummy_nama_produk">Jam Tangan Alexandre Christi</string>
     <string name="order">Pesanan</string>
     <string name="settings">Setelan</string>
@@ -84,10 +84,14 @@
     <string name="product_review">Ulasan</string>
     <string name="news_feed">Feed</string>
     <string name="log_out">Keluar</string>
-    <string name="profil">PROFIL</string>
-    <string name="favorites">FAVORITES</string>
-    <string name="reviews">REVIEWS</string>
+    <string name="profil">Profil</string>
+    <string name="favorites">Favorit</string>
+    <string name="reviews">Review</string>
     <string name="dummy_price">Rp. 730.000</string>
     <string name="balance">Balance</string>
     <string name="dummy_points">415 Points</string>
+    <string name="ditandai">Ditandai</string>
+    <string name="transaksi">Transaksi</string>
+    <string name="voucher">Voucher</string>
+    <string name="articles">Artikel</string>
 </resources>
