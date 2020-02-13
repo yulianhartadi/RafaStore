@@ -24,7 +24,7 @@
     <string name="semua">Semua</string>
     <string name="terbaru">Terbaru</string>
     <string name="lainnya">Lainnya</string>
-    <string name="cari">Cari</string>
+    <string name="cari">Temukan produk</string>
     <string name="detail">Detail</string>
     <string name="masukkan_keranjang">Masukkan Keranjang</string>
     <string name="bagikan">Bagikan</string>
@@ -54,7 +54,7 @@
     <string name="email">Email</string>
     <string name="dummy_email">abu.abdillah@mail.com</string>
     <string name="no_telp">No_Telp</string>
-    <string name="dummy_phone_number">(859) 261-0876</string>
+    <string name="dummy_phone_number">(859) 261 &#8211; 0876</string>
     <string name="alamat">Alamat</string>
     <string name="dummy_alamat">GG. Perkutut 12a</string>
     <string name="negara">Negara</string>
@@ -69,7 +69,7 @@
     <string name="dummy_alamat_full">GG. Perkutut 12a, Waringinrejo, Cemani, Grogol, Sukoharjo, Jawa Tengah, 41071</string>
     <string name="metode_pembayaran">METODE PEMBAYARAN</string>
     <string name="dummy_bank">Bank Mandiri</string>
-    <string name="dummy_rekening">88543 - 7043 - 2461 - 1195</string>
+    <string name="dummy_rekening">88543 &#8211; 7043 &#8211; 2461 &#8211; 1195</string>
     <string name="no_rekening">Card Number</string>
     <string name="simpan_metode_pembayaran">Simpan metode pembayaran</string>
     <string name="akun_bank">Akun Bank</string>
@@ -84,4 +84,10 @@
     <string name="product_review">Ulasan</string>
     <string name="news_feed">Feed</string>
     <string name="log_out">Keluar</string>
+    <string name="profil">PROFIL</string>
+    <string name="favorites">FAVORITES</string>
+    <string name="reviews">REVIEWS</string>
+    <string name="dummy_price">Rp. 730.000</string>
+    <string name="balance">Balance</string>
+    <string name="dummy_points">415 Points</string>
 </resources>

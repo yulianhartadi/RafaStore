@@ -1,18 +1,15 @@
 package net.kampungweb.rafastore;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.mikhaellopez.circularimageview.CircularImageView;
 
 import java.util.Objects;
 
@@ -24,9 +21,6 @@ import io.paperdb.Paper;
  */
 public class UserFragment extends Fragment {
 
-    private CircularImageView userImagePict;
-    private TextView userLocation;
-    private TextView userFullName;
 
     public UserFragment() {
         // Required empty public constructor
@@ -41,21 +35,66 @@ public class UserFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_user, container, false);
         Paper.init(Objects.requireNonNull(getContext()));
 
-        //user image profile pict
-        userImagePict = view.findViewById(R.id.civ_user_pict_profile);
+        // button to user profile
+        FloatingActionButton fabUserProfile = view.findViewById(R.id.fab_user_profile);
+        fabUserProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "setting profile", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // button to user whishlist
+        FloatingActionButton fabUserWhishlist = view.findViewById(R.id.fab_user_whishlist);
+        fabUserWhishlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "user whishlist", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // button to user whishlist
+        FloatingActionButton fabFavorites = view.findViewById(R.id.fab_user_reviews);
+        fabFavorites.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "user reviews", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // button to favorites
+        FloatingActionButton fabUserFavorites = view.findViewById(R.id.fab_user_favorites);
+        fabUserFavorites.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "favorites product", Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
         //user name
-        userFullName = view.findViewById(R.id.tv_user_fullname);
+        //userFullName = view.findViewById(R.id.tv_user_fullname);
         /*if (userFullName != null) {
             userFullName.setText(Prevalent.currentOnlineUsers.getFullName());
         }*/
 
+        //user message
+        //FloatingActionButton fabUserMessage = view.findViewById(R.id.fab_user_message);
+        /*fabUserMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(),"user message", Toast.LENGTH_SHORT).show();
+                Objects.requireNonNull(getActivity()).finish();
+            }
+        });*/
+
+
         // Logout fab button
-        FloatingActionButton fabLogout = view.findViewById(R.id.fab_logout);
+       /* FloatingActionButton fabLogout = view.findViewById(R.id.fab_logout);
         fabLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Log out", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "Log out", Toast.LENGTH_SHORT).show();
                 Paper.book().destroy();
 
                 //alternative jump activity
@@ -68,7 +107,7 @@ public class UserFragment extends Fragment {
                 getActivity().finish();
 
             }
-        });
+        });*/
 
         return view;
     }
