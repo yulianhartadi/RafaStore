@@ -44,22 +44,17 @@ public class UserFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_user, container, false);
         Paper.init(Objects.requireNonNull(getContext()));
 
-        //user image profile pict
+       /* //user image profile pict
         userImagePict = view.findViewById(R.id.civ_user_pict_profile);
 
         //user name
         userFullName = view.findViewById(R.id.tv_user_fullname);
         if (userFullName != null){
             userFullName.setText(Prevalent.currentOnlineUsers.getFullName());
-        }
-
-
-        //user location
-        userLocation = view.findViewById(R.id.tv_user_location);
-
+        }*/
 
         // Logout fab button
-        FloatingActionButton fabLogout = view.findViewById(R.id.fab_logout);
+        /*FloatingActionButton fabLogout = view.findViewById(R.id.fab_logout);
         fabLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,7 +71,7 @@ public class UserFragment extends Fragment {
                 getActivity().finish();
 
             }
-        });
+        });*/
 
         return view;
     }
