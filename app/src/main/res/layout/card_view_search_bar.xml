@@ -12,7 +12,7 @@
         android:id="@+id/cv_search"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/spacing_middle"
+        android:layout_marginStart="@dimen/spacing_middle"
         android:layout_marginTop="@dimen/spacing_large"
         android:layout_marginBottom="@dimen/spacing_large"
         android:layout_weight="1"
@@ -34,6 +34,7 @@
                 android:layout_height="?attr/actionBarSize"
                 android:layout_gravity="center"
                 android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/cari"
                 android:tint="@color/grey_40"
                 app:srcCompat="@drawable/ic_search" />
 
@@ -42,8 +43,9 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center|left"
+                android:gravity="center|start"
                 android:paddingStart="@dimen/spacing_small"
+                android:paddingEnd="0dp"
                 android:text="@string/cari"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
                 android:textColor="@color/grey_40" />
@@ -63,6 +65,7 @@
         android:layout_gravity="center"
         android:layout_weight="1"
         android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/favorites"
         android:tint="@android:color/white"
         app:srcCompat="@drawable/ic_favorite" />
 
@@ -77,6 +80,7 @@
         android:layout_gravity="center"
         android:layout_weight="1"
         android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/message"
         android:tint="@android:color/white"
         app:srcCompat="@drawable/ic_email" />
 
@@ -85,12 +89,13 @@
         android:layout_height="match_parent" />
 
     <ImageButton
-        android:id="@+id/btn_notif"
+        android:id="@+id/btn_alert_notif"
         android:layout_width="?attr/actionBarSize"
         android:layout_height="?attr/actionBarSize"
         android:layout_gravity="center"
         android:layout_weight="1"
         android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/notification"
         android:tint="@android:color/white"
         app:srcCompat="@drawable/ic_notifications" />
 

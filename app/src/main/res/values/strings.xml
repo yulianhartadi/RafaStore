@@ -94,4 +94,7 @@
     <string name="transaksi">Transaksi</string>
     <string name="voucher">Voucher</string>
     <string name="articles">Artikel</string>
+    <string name="notification">notification</string>
+    <string name="dummy_text">The Backpacker</string>
+    <string name="dummy_text_slider">Suspendisse ornare est ac auctor pulvinar</string>
 </resources>

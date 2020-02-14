@@ -122,7 +122,7 @@ public class HomeFragment extends Fragment {
 
         ImageButton imgfavorit = view.findViewById(R.id.btn_favorite);
         ImageButton imgMessage = view.findViewById(R.id.btn_message);
-        ImageButton imgNotification = view.findViewById(R.id.btn_notif);
+        ImageButton imgNotification = view.findViewById(R.id.btn_alert_notif);
 
         imgfavorit.setOnClickListener(new View.OnClickListener() {
             @Override
